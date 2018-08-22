@@ -29,9 +29,9 @@ O aluno deve seguir os passos abaixo para poder configurar os ***FG*** dos *Site
 
 #### FORTIGATES
 HOSTNAME | Port1 | Port2
-:-------:|:----:|:---:|:----:
-FG_A|**(WAN1)** *192.168.100.1/24*|**(LAN)** *10.1.40.2/24*<br/>**(DMZ)** *172.16.0.254/24*|-|-
-FG_B|**(WAN1)** *192.168.200.1/24*|**(LAN)** *10.2.40.2/24*|-|-
+:-------:|:----:|:---:
+FG_A|**(WAN1)** *192.168.100.1/24*|**(LAN)** *10.1.40.2/24*<br/>**(DMZ)** *172.16.0.254/24*
+FG_B|**(WAN1)** *192.168.200.1/24*|**(LAN)** *10.2.40.2/24*
 
 #### ROTEADORES
 HOSTNAME | Port1 | Port2
