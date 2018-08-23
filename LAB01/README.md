@@ -112,7 +112,7 @@ COMANDO | DESCRIÇÃO
 ## ATIVIDADES DO LAB 01
 ### Tarefa 01
 
-O aluno de verá executar as configurações iniciais no ***FG_A*** via *CLI*, para obter acesso a interface *WEB* do equipamento.
+O aluno deve executar as configurações iniciais no ***FG_A*** via *CLI*, para obter acesso a interface *WEB* do equipamento.
 
 1. O aluno deve acessar o LAB 01.
 
@@ -238,17 +238,30 @@ Compare com a saída abaixo:
 >
     FG_A # execute ping 10.1.40.1
     == [ port1 ]
-    name: port1   mode: dhcp    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
+    name: port1   mode: dhcp    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   
+    netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    
+    mtu-override: disable    wccp: disable   drop-overlapped-fragment: disable    drop-fragment: disable    
     == [ port2 ]
-    name: port2   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
+    name: port2   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   
+    netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable   
+    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
     == [ port3 ]
-    name: port3   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
+    name: port3   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   
+    netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable   
+    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
     == [ port4 ]
-    name: port4   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
+    name: port4   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   
+    netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    
+    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
     == [ ssl.root ]
-    name: ssl.root   ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: tunnel   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    wccp: disable    
+    name: ssl.root   ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: tunnel   
+    netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    
+    wccp: disable    
     == [ LAN ]
-    name: LAN   mode: static    ip: 10.1.40.2 255.255.255.0   status: up    netbios-forward: disable    type: vlan   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable
+    name: LAN   mode: static    ip: 10.1.40.2 255.255.255.0   status: up    netbios-forward: disable    
+    type: vlan   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    
+    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    
+    drop-fragment: disable
 
 Verificar a conectividade com o Switch ***CORE_A***:
 
@@ -385,8 +398,40 @@ Compare com a saída abaixo:
 
 ### Tarefa 02
 
-O aluno de verá executar as configurações iniciais no ***FG_A*** via *CLI*, para obter acesso a interface *WEB* do equipamento.
+O aluno deve acessar a Interface *WEB* do ***FG_A***\.
 
-1. O aluno deve acessar o LAB 01.
+1. O aluno deve acessar o ***CLIENTE_A***\.
 
-2. Depois deve clicar em ***More actions***, e depois ***Start all nodes***
+![CLIENTE_A Tela de Login](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-login.png)
+
+2. Efetue login com as credênciais fornecidas no inicio do LAB
+
+3. Abra o Navegador Firefox
+
+![CLIENTE_A Localização do Firefox](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-Firefox.png)
+
+4. Digite o endereço 10.1.40.2 no Firefox para acessar a tela de Login do FortiGate FG_A, e efetue login com o usuário ***admin*** sem senha.
+
+![CLIENTE_A FG_WEB Login](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-FG_WEB_LOGIN.png)
+
+5. Será exibida uma mensagem alertando que a senha dever alterada.
+
+![FORTIGATE Password Warning](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_PASSWORD_WARNING.png)
+
+6. Altere o password para ***P@ssw0rd!***
+
+![FORTIGATE PASSWORD CHANGE](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_PASSWORD_CHANGE.png)
+
+7. Efetue login com o usuário ***admin*** e a senha ***P@ssw0rd!***
+
+![FORTIGAGE FAZER LOGIN COM NOVAS CREDENCIAIS](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-FG_WEB_LOGIN_2.png)
+
+Se o Login for bem sucedido o Fortigate ***FG_A*** deve redirecionar para uma página exibindi o *Dashboard*\.
+
+![FORTIGATE FG_A Página do Dashboard](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-DASHBOARD_1.png)
+
+### Tarefa 03
+
+O aluno deve completar a configuração do ***FG_A*** para permitir o acesso dos Hosts do ***SITE A*** a *Internet*\.
+
+1. O aluno deve acessar o ***CLIENTE_A***\.
