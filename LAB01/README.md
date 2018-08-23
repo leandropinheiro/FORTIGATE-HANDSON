@@ -459,7 +459,7 @@ Prencha os campos com as informações Abaixo:
 
 Em ***Anddress Range***, Clique em ***+Create New***
 
-*Starting IP*: ***172.16.0.10***  
+*Starting IP*: ***172.16.0.1***  
 *End IP*: ***172.16.0.100***
 
 *Network*: ***255.255.255.0***
@@ -472,7 +472,7 @@ Efetuar login no ***SERVIDOR2*** com as credencias informadas no inicio do LAB.
 
 ![SERVER2 Login Prompt](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-Login.png)
 
-Utilizer o comando ***ip a*** para verificar as configurações da Interface ***ens3***
+Utilize o comando ***ip a*** para verificar as configurações da Interface ***ens3***
 
 ![SERVER2 verificar ip da Interface ens3](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ip_a-ens3_1.png)
 
@@ -480,3 +480,30 @@ Execute um ping para o IP da Interface *DMZ* do ***FG_A***, depois de algumas re
 
 ![SERVER 2 executar ping no IP da DMZ do FG_A](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ping-FG_A-DMZ_1.png)
 
+3. Criar um *Lease DHCP Fixo* (Reserva) para o ***SERVER2*** no ***FG_A***\:
+
+Selecione a Interface *DMZ* e clique no botão *Edit*
+
+![FORTIGAGE FG_A selecionar DMZ para edição](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-edit-DMZ_1.png)
+
+Navegue até a seção de DHCP e expanda ***\+ Advanced***
+
+![FORTIGATE FG_A Edição DMZ seção DHCP + Advanced](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-edit-DMZ-DHCP_ADVANCED_1.png)
+
+Execute o comando **ip a** no ***SERVER2*** e anote o *MAC Address* da Interface *ens3*\.
+
+![SERVER2 Interface ens3 MAC Address](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ip_a-ens3_2.png)
+
+Retorne a Interface *WEB* do ***FG_A*** e navegue até a **MAC Reservation + Access Control**, preencha com os dados abaixo:
+
+*MAC Address*: ***00:50:00:00:02:00***  
+*Action or IP*: ***Reserve IP | 172.16.0.10***  
+*Description*: ***SERVER2***
+
+![FORTIGATE FG_A Criar Reserva SERVER2](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-edit-DMZ-DHCP_ADVANCED_2.png)
+
+Clique no botão ***OK***
+
+Acesse o ***SERVER2***, execute o comando **sudo netplan apply** para renovar o IP, e depis **ip a** para verificar se obteve o IP Reservado.
+
+![SERVER2 verificar alterações na Interface ens3](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ip_a-ens3_3.png)
