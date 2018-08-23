@@ -4,7 +4,7 @@
 ### ***Índice***
 
 * [Objetivo](#objetivo)
-* [Topologia do LAB](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#topologia-do-lab)
+* [Topologia do LAB](#topologia-do-lab)
 	* [Credenciais de acesso](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#credenciais-de-acesso)
 * [Comandos utilizados no LAB](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#comandos-utilizados-no-lab)
 * [ATIVIDADES DO LAB 01](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#atividades-do-lab-01)
