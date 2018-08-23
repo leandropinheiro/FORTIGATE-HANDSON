@@ -3,7 +3,7 @@
 
 ### ***Índice***
 
-* [Objetivo](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#objetivo)
+* [Objetivo](#objetivo)
 * [Topologia do LAB](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#topologia-do-lab)
 	* [Credenciais de acesso](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#credenciais-de-acesso)
 * [Comandos utilizados no LAB](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#comandos-utilizados-no-lab)
@@ -93,12 +93,13 @@ COMANDO | DESCRIÇÃO
 #### ***LINUX***
 COMANDO | DESCRIÇÃO
 :-------|:---------
-*show running-config **view full***|Mostra a configuração atual do equipamento (o view full só é necessário quando utilizada a funcionalidade *Parser View*, que o caso deste LAB)
+*sudo hostnamectl set-hostname **new_hostname***|Altera o hostname do equipamento para o ***new_hostname*** 
+*ip a*|Exibe a configuração IP das interfaces do equipamento
 *ping **ip_address***|Executa um ping para o ***ip_address*** especificado
 *traceroute **ip_address***|Executa um traceroute para o ***ip_address*** especificado
-*show ip route*|Exibe a tabela de rotas do equipamento
-*show ip interface brief*|Exibe o endereço IP das interfaces do equipamento
-*show vlan*|Exibe as VLANs e as portas associadas as mesmas (somente switch)
+*route*|Exibe a tabela de rotas do equipamento
+*sudo systemctl restart NetworkManager.service*|Recarrega as configurações de rede no ***MINT 19***
+*sudo netplan apply*|Recarrega as configurações de rede no ***UBUNTU 18.04***
 
 ## ATIVIDADES DO LAB 01
 ### Tarefa 01
