@@ -434,4 +434,49 @@ Se o Login for bem sucedido o Fortigate ***FG_A*** deve redirecionar para uma p�
 
 O aluno deve completar a configuração do ***FG_A*** para permitir o acesso dos Hosts do ***SITE A*** a *Internet*\.
 
-1. O aluno deve acessar o ***CLIENTE_A***\.
+1. Configurar a uma nova Interface ***DMZ***\:
+
+Acessar a configuração de uma nova Interface:
+
+![FORTIGATE FG_A Criar nova Interface](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-CREATE_NEW_INTERFACE.png)
+
+Prencha os campos com as informações Abaixo:
+
+*Interface Name*: ***VLAN30***  
+*Alias*: ***DMZ***  
+*Type*: ***VLAN***  
+*Interface*: ***port2***  
+*VLAN ID*: ***30***  
+
+*Role*: ***Undefined***
+
+*Addressing Mode*: ***Manual***  
+*IP/Network Mask*: ***172.16.0.254/24***
+
+*Administrative Access*: ***PING***
+
+*DHCP Server*: ***Enable***
+
+Em ***Anddress Range***, Clique em ***+Create New***
+
+*Starting IP*: ***172.16.0.10***  
+*End IP*: ***172.16.0.100***
+
+*Network*: ***255.255.255.0***
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+2. Verificar se o ***SERVIDOR2*** obtem IP e acessa o IP da Interface DMZ do ***FG_A***\.
+
+Efetuar login no ***SERVIDOR2*** com as credencias informadas no inicio do LAB.
+
+![SERVER2 Login Prompt](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-Login.png)
+
+Utilizer o comando ***ip a*** para verificar as configurações da Interface ***ens3***
+
+![SERVER2 verificar ip da Interface ens3](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ip_a-ens3_1.png)
+
+Execute um ping para o IP da Interface *DMZ* do ***FG_A***, depois de algumas respostas tecle ***CTRL+C*** para interromper.
+
+![SERVER 2 executar ping no IP da DMZ do FG_A](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ping-FG_A-DMZ_1.png)
+
