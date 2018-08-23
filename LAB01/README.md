@@ -65,7 +65,7 @@ Os hosts **CLIENTE_A**, **CLIENTE_B**, **SERVER1**, **SERVER2** e **CLIENTE_EXTE
 ***Password*** = *P@ssw0rd!*
 
 ##### ***FORTIGATE***
-***Username*** = *pinetech*  
+***Username*** = *admin*  
 ***Password Padrão*** = *sem senha*  
 ***Password a configurar*** = *P@ssw0rd!*
 
@@ -107,7 +107,7 @@ COMANDO | DESCRIÇÃO
 *show*| (dentro do config) Exibe as configurações do módulo especifico
 *show*| (fora do config) Exibe toda a configuração do equipamento
 *show **módulo***| (fora do config) Exibe a configuração do ***módulo*** especificado
-*get* | (fora do config) Obtém e exibe valores de processos do equipamento
+*get **módulo*** | (fora do config) Obtém e exibe valores de processos do equipamento
 
 ## ATIVIDADES DO LAB 01
 ### Tarefa 01
@@ -138,6 +138,9 @@ O aluno de verá executar as configurações iniciais no ***FG_A*** via *CLI*, p
 	# Altera o hostname para FG_A
     #
     set hostname FG_A
+    #
+    # Aplicar a configuração e sai
+    #
     end
     
 8. Entra no modo de cofniguração de Interfaces e verificar quais portas estão disponíveis no equipamento
@@ -219,7 +222,7 @@ Compare com a saída de exemplo abaixo:
     #
     set ip 10.1.40.2/24
     #
-    # Aplicar a configuração
+    # Aplicar a configuração e sai
     #
     end
 
@@ -379,3 +382,11 @@ Compare com a saída abaixo:
     --- 10.1.20.101 ping statistics ---
     5 packets transmitted, 5 packets received, 0% packet loss
     round-trip min/avg/max = 0.6/1.4/2.4 ms
+
+### Tarefa 02
+
+O aluno de verá executar as configurações iniciais no ***FG_A*** via *CLI*, para obter acesso a interface *WEB* do equipamento.
+
+1. O aluno deve acessar o LAB 01.
+
+2. Depois deve clicar em ***More actions***, e depois ***Start all nodes***
