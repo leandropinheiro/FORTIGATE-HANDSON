@@ -418,11 +418,14 @@ O aluno deve acessar a Interface *WEB* do ***FG_A***, e completar a configuraç�
 
 ![FORTIGATE Password Warning](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_PASSWORD_WARNING.png)
 
-6. Altere o password para ***P@ssw0rd!***.
+6. Altere o password para ***P@ssw0rd!***
 
 ![FORTIGATE PASSWORD CHANGE](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_PASSWORD_CHANGE.png)
 
-7. Efetue login com o usuário ***admin*** e a senha ***P@ssw0rd!***.
+7. Efetue login com o usuário ***admin*** e a senha ***P@ssw0rd!***
 
 ![FORTIGAGE FAZER LOGIN COM NOVAS CREDENCIAIS](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-FG_WEB_LOGIN_2.png)
 
+Se o Login for bem sucedido o Fortigate ***FG_A*** deve redirecionar para uma página exibindi o *Dashboard*
+
+![FORTIGATE FG_A Página do Dashboard](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-DASHBOARD_1.png)
