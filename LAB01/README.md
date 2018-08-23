@@ -259,7 +259,8 @@ Compare com a saída abaixo:
     wccp: disable    
     == [ LAN ]
     name: LAN   mode: static    ip: 10.1.40.2 255.255.255.0   status: up    netbios-forward: disable    
-    type: vlan   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable
+    type: vlan   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    
+    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable
 
 Verificar a conectividade com o Switch ***CORE_A***:
 
