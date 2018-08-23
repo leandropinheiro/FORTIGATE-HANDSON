@@ -507,3 +507,4 @@ Clique no botão ***OK***
 Acesse o ***SERVER2***, execute o comando **sudo netplan apply** para renovar o IP, e depis **ip a** para verificar se obteve o IP Reservado.
 
 ![SERVER2 verificar alterações na Interface ens3](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ip_a-ens3_3.png)
+
