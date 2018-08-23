@@ -1,0 +1,175 @@
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname ISP_B
+!
+boot-start-marker
+boot-end-marker
+!
+aqm-register-fnf
+!
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication enable default enable
+aaa authorization console
+aaa authorization exec default local 
+!         
+!
+!
+!
+!
+aaa session-id common
+clock timezone EET 2 0
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip cef    
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+username aluno privilege 15 view aluno secret 5 $1$qnbv$vR0eCgzUP0DbqGNcfOQIA1
+username localadmin privilege 15 secret 5 $1$HiUU$nEYdwkzNTGVWiNgAEE2cT1
+username localamdin view root
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!         
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ description TO-INTERNET-e0/3
+ ip address 192.168.2.253 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/1
+ description TO-FG_B-port1
+ ip address 192.168.200.254 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown 
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 192.168.2.254
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+banner exec ^
+          
+   /$$$$$$$  /$$$$$$ /$$   /$$ /$$$$$$$$ /$$                         /$$      
+  | $$__  $$|_  $$_/| $$$ | $$| $$_____/| $$                        | $$      
+  | $$  \ $$  | $$  | $$$$| $$| $$     /$$$$$$    /$$$$$$   /$$$$$$$| $$$$$$$ 
+  | $$$$$$$/  | $$  | $$ $$ $$| $$$$$ |_  $$_/   /$$__  $$ /$$_____/| $$__  $$
+  | $$____/   | $$  | $$  $$$$| $$__/   | $$    | $$$$$$$$| $$      | $$  \ $$
+  | $$        | $$  | $$\  $$$| $$      | $$ /$$| $$_____/| $$      | $$  | $$
+  | $$       /$$$$$$| $$ \  $$| $$$$$$$$|  $$$$/|  $$$$$$$|  $$$$$$$| $$  | $$
+  |__/      |______/|__/  \__/|________/ \___/   \_______/ \_______/|__/  |__/
+                                                                              
+                                                                              
+                                                                              
+                      https://youtube.com/c/PINEtechBRtv/
+
+                     +-+-+-+-+-+-+-+-+-+ +-+ +-+-+-+ +-+-+
+                     |F|O|R|T|I|G|A|T|E| |-| |L|A|B| |0|1|
+                     +-+-+-+-+-+-+-+-+-+ +-+ +-+-+-+ +-+-+
+                                  +-+-+-+-+-+
+                                  |I|S|P|_|B|
+                                  +-+-+-+-+-+
+ 
+    01010000 01001001 01001110 01000101 01110100 01100101 01100011 01101000
+^
+banner login ^
+ 
+   /$$$$$$$  /$$$$$$ /$$   /$$ /$$$$$$$$ /$$                         /$$      
+  | $$__  $$|_  $$_/| $$$ | $$| $$_____/| $$                        | $$      
+  | $$  \ $$  | $$  | $$$$| $$| $$     /$$$$$$    /$$$$$$   /$$$$$$$| $$$$$$$ 
+  | $$$$$$$/  | $$  | $$ $$ $$| $$$$$ |_  $$_/   /$$__  $$ /$$_____/| $$__  $$
+  | $$____/   | $$  | $$  $$$$| $$__/   | $$    | $$$$$$$$| $$      | $$  \ $$
+  | $$        | $$  | $$\  $$$| $$      | $$ /$$| $$_____/| $$      | $$  | $$
+  | $$       /$$$$$$| $$ \  $$| $$$$$$$$|  $$$$/|  $$$$$$$|  $$$$$$$| $$  | $$
+  |__/      |______/|__/  \__/|________/ \___/   \_______/ \_______/|__/  |__/
+                                                                              
+                      https://youtube.com/c/PINEtechBRtv/
+
+                     +-+-+-+-+-+-+-+-+-+ +-+ +-+-+-+ +-+-+
+                     |F|O|R|T|I|G|A|T|E| |-| |L|A|B| |0|1|
+                     +-+-+-+-+-+-+-+-+-+ +-+ +-+-+-+ +-+-+
+                                  +-+-+-+-+-+
+                                  |I|S|P|_|B|
+                                  +-+-+-+-+-+
+ 
+    01010000 01001001 01001110 01000101 01110100 01100101 01100011 01101000^
+parser view aluno
+ secret 5 $1$/CD0$dZAafOUTXSWkEH24JHPfn/
+ commands configure include all interface
+ commands exec include all traceroute
+ commands exec include all ping
+ commands exec include all show
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ transport input none
+!
+!
+end

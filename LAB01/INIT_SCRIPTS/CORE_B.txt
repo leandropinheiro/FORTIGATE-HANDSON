@@ -1,0 +1,175 @@
+!
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname CORE_B
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+username aluno privilege 15 view aluno secret 5 $1$qnbv$vR0eCgzUP0DbqGNcfOQIA1
+username localadmin privilege 15 secret 5 $1$HiUU$nEYdwkzNTGVWiNgAEE2cT1
+username localamdin view root
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication enable default enable
+aaa authorization console
+aaa authorization exec default local 
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone EET 2 0
+!
+ip cef
+!
+ip dhcp pool CLIENTE_B
+ host 10.2.20.101 255.255.255.0
+ hardware-address 0050.0000.0400
+ default-router 10.2.20.254 
+ dns-server 1.1.1.1 8.8.8.8 
+!
+!
+no ipv6 cef
+ipv6 multicast rpf use-bgp
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 20
+ name LAN
+!
+vlan 40
+ name TRANSITO 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ description TO-FG_B-port2
+ switchport access vlan 40
+ switchport mode access
+ duplex auto
+ spanning-tree portfast
+ no shutdown
+!
+interface Ethernet0/1
+ description TO-CLIENTE_B-e0
+ switchport access vlan 20
+ switchport mode access
+ duplex auto
+ spanning-tree portfast
+ no shutdown
+!
+interface Ethernet0/2
+ duplex auto
+!
+interface Ethernet0/3
+ duplex auto
+!
+interface Vlan20
+ description LAN
+ ip address 10.2.20.254 255.255.255.0
+ no shutdown
+!
+interface Vlan40
+ description TRANSITO-TO-FG_B
+ ip address 10.2.40.1 255.255.255.252
+ no shutdown
+!
+!
+no ip http server
+!
+ip route 0.0.0.0 0.0.0.0 10.2.40.2 name FW
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^
+ 
+   /$$$$$$$  /$$$$$$ /$$   /$$ /$$$$$$$$ /$$                         /$$      
+  | $$__  $$|_  $$_/| $$$ | $$| $$_____/| $$                        | $$      
+  | $$  \ $$  | $$  | $$$$| $$| $$     /$$$$$$    /$$$$$$   /$$$$$$$| $$$$$$$ 
+  | $$$$$$$/  | $$  | $$ $$ $$| $$$$$ |_  $$_/   /$$__  $$ /$$_____/| $$__  $$
+  | $$____/   | $$  | $$  $$$$| $$__/   | $$    | $$$$$$$$| $$      | $$  \ $$
+  | $$        | $$  | $$\  $$$| $$      | $$ /$$| $$_____/| $$      | $$  | $$
+  | $$       /$$$$$$| $$ \  $$| $$$$$$$$|  $$$$/|  $$$$$$$|  $$$$$$$| $$  | $$
+  |__/      |______/|__/  \__/|________/ \___/   \_______/ \_______/|__/  |__/
+                                                                              
+                                                                              
+                                                                              
+                      https://youtube.com/c/PINEtechBRtv/
+
+                     +-+-+-+-+-+-+-+-+-+ +-+ +-+-+-+ +-+-+
+                     |F|O|R|T|I|G|A|T|E| |-| |L|A|B| |0|1|
+                     +-+-+-+-+-+-+-+-+-+ +-+ +-+-+-+ +-+-+
+                                 +-+-+-+-+-+-+
+                                 |C|O|R|E|_|B|
+                                 +-+-+-+-+-+-+
+ 
+    01010000 01001001 01001110 01000101 01110100 01100101 01100011 01101000
+^
+banner login ^
+ 
+   /$$$$$$$  /$$$$$$ /$$   /$$ /$$$$$$$$ /$$                         /$$      
+  | $$__  $$|_  $$_/| $$$ | $$| $$_____/| $$                        | $$      
+  | $$  \ $$  | $$  | $$$$| $$| $$     /$$$$$$    /$$$$$$   /$$$$$$$| $$$$$$$ 
+  | $$$$$$$/  | $$  | $$ $$ $$| $$$$$ |_  $$_/   /$$__  $$ /$$_____/| $$__  $$
+  | $$____/   | $$  | $$  $$$$| $$__/   | $$    | $$$$$$$$| $$      | $$  \ $$
+  | $$        | $$  | $$\  $$$| $$      | $$ /$$| $$_____/| $$      | $$  | $$
+  | $$       /$$$$$$| $$ \  $$| $$$$$$$$|  $$$$/|  $$$$$$$|  $$$$$$$| $$  | $$
+  |__/      |______/|__/  \__/|________/ \___/   \_______/ \_______/|__/  |__/
+                                                                              
+                      https://youtube.com/c/PINEtechBRtv/
+
+                     +-+-+-+-+-+-+-+-+-+ +-+ +-+-+-+ +-+-+
+                     |F|O|R|T|I|G|A|T|E| |-| |L|A|B| |0|1|
+                     +-+-+-+-+-+-+-+-+-+ +-+ +-+-+-+ +-+-+
+                                 +-+-+-+-+-+-+
+                                 |C|O|R|E|_|B|
+                                 +-+-+-+-+-+-+
+ 
+    01010000 01001001 01001110 01000101 01110100 01100101 01100011 01101000^
+parser view aluno
+ secret 5 $1$/CD0$dZAafOUTXSWkEH24JHPfn/
+ commands configure include all interface
+ commands exec include all traceroute
+ commands exec include all ping
+ commands exec include all show
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ transport input none
+!
+end
