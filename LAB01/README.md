@@ -398,9 +398,9 @@ Compare com a saída abaixo:
 
 ### Tarefa 02
 
-O aluno deve acessar a Interface *WEB* do ***FG_A***, e completar a configuração para permitir o acesso dos Hosts do ***SITE A*** a *Internet*.
+O aluno deve acessar a Interface *WEB* do ***FG_A***\.
 
-1. O aluno deve acessar o ***CLIENTE_A***.
+1. O aluno deve acessar o ***CLIENTE_A***\.
 
 ![CLIENTE_A Tela de Login](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-login.png)
 
@@ -426,6 +426,12 @@ O aluno deve acessar a Interface *WEB* do ***FG_A***, e completar a configuraç�
 
 ![FORTIGAGE FAZER LOGIN COM NOVAS CREDENCIAIS](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-FG_WEB_LOGIN_2.png)
 
-Se o Login for bem sucedido o Fortigate ***FG_A*** deve redirecionar para uma página exibindi o *Dashboard*
+Se o Login for bem sucedido o Fortigate ***FG_A*** deve redirecionar para uma página exibindi o *Dashboard*\.
 
 ![FORTIGATE FG_A Página do Dashboard](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-DASHBOARD_1.png)
+
+### Tarefa 03
+
+O aluno deve completar a configuração do ***FG_A*** para permitir o acesso dos Hosts do ***SITE A*** a *Internet*\.
+
+1. O aluno deve acessar o ***CLIENTE_A***\.
