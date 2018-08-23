@@ -238,17 +238,24 @@ Compare com a saída abaixo:
 >
     FG_A # execute ping 10.1.40.1
     == [ port1 ]
-    name: port1   mode: dhcp    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    <br\>type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
+    name: port1   mode: dhcp    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    
+    type: physical   netflow-sampler: disable    sflow-sampler: disable    
+    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    
+    drop-fragment: disable    
     == [ port2 ]
-    name: port2   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    <br\>type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
+    name: port2   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    
+    type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
     == [ port3 ]
-    name: port3   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    <br\>type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
+    name: port3   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    
+    type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
     == [ port4 ]
-    name: port4   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    <br\>type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
+    name: port4   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    
+    type: physical   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable    
     == [ ssl.root ]
     name: ssl.root   ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    <br/>type: tunnel   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    wccp: disable    
     == [ LAN ]
-    name: LAN   mode: static    ip: 10.1.40.2 255.255.255.0   status: up    netbios-forward: disable    <br\>type: vlan   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable
+    name: LAN   mode: static    ip: 10.1.40.2 255.255.255.0   status: up    netbios-forward: disable    
+    type: vlan   netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    drop-fragment: disable
 
 Verificar a conectividade com o Switch ***CORE_A***:
 
