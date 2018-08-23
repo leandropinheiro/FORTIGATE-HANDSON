@@ -94,17 +94,35 @@ COMANDO | DESCRIÇÃO
 *sudo systemctl restart NetworkManager.service*|Recarrega as configurações de rede no ***MINT 19***
 *sudo netplan apply*|Recarrega as configurações de rede no ***UBUNTU 18.04***
 
+#### ***FORTIOS***
+COMANDO | DESCRIÇÃO
+:-------|:---------
+*execute factoryreset*|Apaga toda a configuração do equipamento, e volta ao estado padrão de fábrica
+*execute reboot*|Reinicia o equipamento
+*execute shutdown*|Desliga o equipamento
+*config system global*|Entra na configuração Globa do Systema
+*set hostname **new_hostname***|Altera o hostname do equipamento para ***new_hostname*** (dentro do System Global)
+*end*|Sai e aplica as configurações
+*abort*|Sai e descarta as alterações
+*show*| (dentro do config) Exibe as configurações do módulo especifico
+*show*| (fora do config) Exibe toda a configuração do equipamento
+*show **módulo***| (fora do config) Exibe a configuração do ***módulo*** especificado
+*get* | (fora do config) Obtém e exibe valores de processos do equipamento
+
 ## ATIVIDADES DO LAB 01
 ### Tarefa 01
+
+O aluno de verá executar as configurações iniciais no ***FG_A*** via *CLI*, para obter acesso a interface *WEB* do equipamento.
+
 1. O aluno deve acessar o LAB 01.
 
 2. Depois deve clicar em ***More actions***, e depois ***Start all nodes***
 
-3. Aguardar os roteadores mudarem da cor cinza para azul.
+3. Aguardar os equipamentos mudarem da cor cinza para azul.
 
-4. ***Clicar no icone do RTA***.
+4. ***Clicar no icone do FG_A***.
 
-![RTA](https://raw.githubusercontent.com/leandropinheiro/BGP101/master/img/RTA_console.png)
+![FG_A tela de login](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-login.png)
 
 5. Deve abrir uma sessão de terminal com o *prompt* de *login* do roteador ***RTA***.
 
