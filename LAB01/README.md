@@ -1,7 +1,7 @@
 # FORTIGATE v6.0 Hands On
 ## LAB 01
 
-### Índice
+### ***Índice***
 
 * [Objetivo](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#objetivo)
 * [Topologia do LAB](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#topologia-do-lab)
@@ -18,44 +18,87 @@
 	* [Tarefa 08](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#tarefa-08)
 	* [Tarefa 09](https://github.com/leandropinheiro/BGP101/tree/master/LAB%2001#tarefa-09)
 
-### Objetivo
+### ***Objetivo***
 Neste lab o aluno será apresentado as configurações iniciais do ***FORTIGATE***, assim como aos comandos básicos para configurar a interface de gerencia via *CLI*.
 
 O aluno deve seguir os passos abaixo para poder configurar os ***FG*** dos *Sites A* e *B*.
 
-### Topologia do LAB
+### ***Topologia do LAB***
 
-![topologia](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/TOPOLOGIA%20-%20LAB%2001.png)
+![topologia do lab 01 ](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/TOPOLOGIA%20-%20LAB%2001.png)
 
-#### FORTIGATES
-HOSTNAME | Port1 | Port2
-:-------:|:----:|:---:
-FG_A|**(WAN1)** *192.168.100.1/24*|**(LAN)** *10.1.40.2/24*<br/>**(DMZ)** *172.16.0.254/24*
+#### ***FORTIGATES***
+HOSTNAME | Port1 | Port2 | Port3
+:-------:|:-----:|:-----:|:-----:
+FG_A|**(WAN1)** *192.168.100.1/24*|**(LAN)** *10.1.40.2/24*<br/>**(DMZ)** *172.16.0.254/24*|**(WAN2)** *192.168.110.1/24*
 FG_B|**(WAN1)** *192.168.200.1/24*|**(LAN)** *10.2.40.2/24*
 
-#### ROTEADORES
-HOSTNAME | Port1 | Port2
+#### ***ROTEADORES***
+HOSTNAME | e0/0 | e0/1 | 0/2 | e0/3
+:-------:|:----:|:----:|:---:|:---:
+ISP_A|*192.168.1.**253**/24*|*192.168.100.**254**/24*|*192.168.110.**254**/24*|-
+ISP_B|*192.168.2.**253**/24*|*192.168.200.**254**/24*|-|-
+INTERNET|*192.168.0.**254**/24*|*DHCP CLIENT*|*192.168.1.**254**/24*|*192.168.2.**254**/24*
 
-O roteador **RTC** está pré-configurado e o aluno não precisa realizar nenhuma intervenção de configuração neste equipamento, entretanto é permitido usar comandos *show*, *ping* e *tracerouter*.
+#### ***SWITCHES***
+HOSTNAME | e0/0 | e0/1 | 0/2 | e0/3|VLAN10|VLAN20|VLAN40
+:-------:|:----:|:----:|:---:|:---:|:----:|:----:|:----:
+CORE_A|***TRUNK***<br/>*NATIVE*(**V1**)<br/>*TAGGED*(***V30,40***)|***ACCESS***<br/>*VLAN **20***|***ACCESS***<br/>*VLAN **10***|***ACCESS***<br/>*VLAN **30***|*10.1.10.**254**/24*|*10.1.20.**254**/24*|*10.1.40.**1**/24*
+CORE_B|***ACCESS***<br/>*VLAN **40***|***ACCESS***<br/>*VLAN **20***|-|-|-|*10.2.10.**254**/24*|*10.2.40.**1**/24*
 
-Os roteadores **RTA** e **RTB** estão configurados apenas com as configurações básicas, como *hostname*, *description* e endereço *IPv4* e *IPv6* das *interfaces*. Nestes equipamentos o aluno pode fazer qualquer configuração, e executar quaisquer comandos.
+#### ***HOSTS***
+HOSTNAME | SISTEMA | SERVIÇO | e0 | NAT
+:-------:|:-------:|:-------:|:--:|:---:
+CLIENTE_A|MINT 19|-|*10.1.20.**101**/24*|-
+SERVER1|UBUNTU 18.04|*HTTP*|*10.1.10.**10**/24*|-
+SERVER2|UBUNTU 18.04|*HTTP*|*172.16.0.**10**/24*|*192.168.100.**10***
+CLIENTE_B|MINT 19|-|*10.2.20.**101**/24*|-
+CLIENTE_EXTERNO|MINT 19|-|*192.168.0.**101**/24*|-
 
-#### Credenciais de acesso
+Os roteadores **ISP_A**, **ISP_B** e **INTERNET**, os switches **CORE_A** e **CORE_B** estão pré-configurados e o aluno não precisa realizar nenhuma intervenção de configuração nestes equipamentos, entretanto é permitido usar comandos *show*, *ping* e *tracerouter*.
 
-***Username*** = *aluno*
+Os firewalls **FG_A** e **FG_B** não estão com qualquer configuração, nestes os alunos podem executar qualquer comando.
 
+Os hosts **CLIENTE_A**, **CLIENTE_B**, **SERVER1**, **SERVER2** e **CLIENTE_EXTERNO** não tem nenhuma limitação, apesar de que a única configuração necessária em um LAB limpo, seria alterar o hostname padrão, nestes o cliente pode fazer atividade.
+
+#### ***Credenciais de acesso***
+
+##### ***ROTEADORES & SWITCHES***
+***Username*** = *aluno*  
 ***Password*** = *aluno*
 
-### Comandos utilizados no LAB
+##### ***LINUX***
+***Username*** = *pinetech*  
+***Password*** = *P@ssw0rd!*
+
+##### ***FORTIGATE***
+***Username*** = *pinetech*  
+***Password Padrão*** = *sem senha*  
+***Password a configurar*** = *P@ssw0rd!*
+
+### ***Comandos utilizados no LAB***
 
 Abaixo alguns dos comandos necessários para executar o LAB, com as devidas explicações:
 
+#### ***CISCO***
 COMANDO | DESCRIÇÃO
 :-------|:---------
-*no*|Nega/Desabilita/Inverte a função de um determinado comando
-*do*|Executa um comando do modo *EXEC* a partir do modo de Configuração
-*configure terminal*|Entra no modo de configuração global
-*end*|Sai do mode de configuração global
+*show running-config **view full***|Mostra a configuração atual do equipamento (o view full só é necessário quando utilizada a funcionalidade *Parser View*, que o caso deste LAB)
+*ping **ip_address***|Executa um ping para o ***ip_address*** especificado
+*traceroute **ip_address***|Executa um traceroute para o ***ip_address*** especificado
+*show ip route*|Exibe a tabela de rotas do equipamento
+*show ip interface brief*|Exibe o endereço IP das interfaces do equipamento
+*show vlan*|Exibe as VLANs e as portas associadas as mesmas (somente switch)
+
+#### ***LINUX***
+COMANDO | DESCRIÇÃO
+:-------|:---------
+*show running-config **view full***|Mostra a configuração atual do equipamento (o view full só é necessário quando utilizada a funcionalidade *Parser View*, que o caso deste LAB)
+*ping **ip_address***|Executa um ping para o ***ip_address*** especificado
+*traceroute **ip_address***|Executa um traceroute para o ***ip_address*** especificado
+*show ip route*|Exibe a tabela de rotas do equipamento
+*show ip interface brief*|Exibe o endereço IP das interfaces do equipamento
+*show vlan*|Exibe as VLANs e as portas associadas as mesmas (somente switch)
 
 ## ATIVIDADES DO LAB 01
 ### Tarefa 01
