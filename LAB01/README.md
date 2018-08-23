@@ -238,9 +238,8 @@ Compare com a saída abaixo:
 >
     FG_A # execute ping 10.1.40.1
     == [ port1 ]
-    name: port1   mode: dhcp    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    
-    type: physical   netflow-sampler: disable    sflow-sampler: disable    
-    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable    drop-overlapped-fragment: disable    
+    name: port1   mode: dhcp    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   
+    netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    mtu-override: disable    wccp: disable   drop-overlapped-fragment: disable    
     drop-fragment: disable    
     == [ port2 ]
     name: port2   mode: static    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    
