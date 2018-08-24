@@ -749,4 +749,96 @@ O aluno deve completar a configuração do **SD-WAN** no ***FG_A*** para permiti
 
 Ativando o SD-WAN o FG_A pode utilizar todas as Interfaces WAN para o Trafego.
 
+**a)** Em **Network > SD-WAN**\:
 
+Altere o Status para **Enable**\.
+
+![FORTIGATE FG_A HABILITAR SD-WAN](../Img/FG_A-SD-WAN_1.png)
+
+**b)** Em SD-WAN Interface Members clique em **[+]**
+
+![FORTIGATE FG_A HABILITAR SD-WAN](../Img/FG_A-SD-WAN_2.png)
+
+**c)** Prencha os campos com as informações abaixo:
+
+*Interface*: ***WAN2 (port3)***  
+*Gateway*: ***192.168.110.254***  
+
+**[!]** Observe que a Interface WAN1 não aparece na lista de Interfaces disponíveis.
+
+Clique no botão **Apply** para aplicar a configuração.
+
+***
+2. Alterar a *Rota Default* para utilizar a Interface **SD-WAN**\.
+
+**a)** Em **Network > Static Routes** selecione a Rota com destino *0.0.0.0/0* e clique no botao **Edit**\.
+
+![FORTIGATE FG_A EDITAR ROTA DEFAULT](../Img/FG_A-ROUTER_STATIC-WAN1(port1)_3.png)
+
+**b)** Alterar o campo *Interface*: ***SD-WAN***
+
+Clique no botão **OK** para aplicar a alteração.
+
+***
+3. Alterar a *Policy IPv4* e alterar a *Outgoing Interface* para ***SD-WAN***\.
+
+**a)** Em **Policy & Objects > IPv4 Policy** selecione a Policy ***LAN-to-WAN*** e depois clique no botão **Edit**\.
+
+![FORTIGATE FG_A EDITAR POLICY IPv4 LAN-to-WAN](../Img/FG_A-create-IPv4_POLICY_2.png)
+
+**b)** Alterar o campo *Outgoing Interface*: ***SD-WAN***
+
+Clique no botão **OK** para aplicar a alteração.
+
+***
+4. Adicionar a Interface **WAN1** ao **SD-WAN**\.
+
+**a)** Em **Network > SD-WAN**\:
+
+**b)** Em SD-WAN Interface Members clique em **[+]**
+
+![FORTIGATE FG_A HABILITAR SD-WAN](../Img/FG_A-SD-WAN_3.png)
+
+**c)** Prencha os campos com as informações abaixo:
+
+**[!]** Observe que a Interface WAN1 aogra aparece na lista de Interfaces disponíveis.
+
+*Interface*: ***WAN1 (port1)***  
+*Gateway*: ***192.168.100.254***  
+
+Clique no botão **Apply** para aplicar a configuração.
+
+***
+5. Alterar o Balanceamento do **SD-WAN** para provar que está saindo por ambas as Interfaces **WAN1** e **WAN2**\.
+
+**a)** Em **Network > SD-WAN Rules** selecione a Regra e clique no botão **Edit**\.
+
+![FORTIGATE FG_A HABILITAR SD-WAN](../Img/FG_A-SD-WAN_4.png)
+
+**b)** Alterar o *Load Balancing Algorithm* para **Source-Destination IP**\.
+
+[FORTIGATE FG_A HABILITAR SD-WAN](../Img/FG_A-SD-WAN_5.png)
+
+Clique no botão **OK** para aplicar a alteração.
+
+***
+6. Validar a utilização dos Liks WAN
+
+**a)** Abra um novo terminal no ***CLIENTE_A*** e execute o comando abaixo:
+
+>
+    traceroute 8.8.8.8
+
+![CLIENTE_A TESTE CONTECTIVIDADE 8.8.8.8](../Img/CLIENTE_A-TESTE-INTERNET_ACCESS_3.png)
+
+**[!]** Observe que foi utilizada a Interface WAN2
+
+**b)** Abra um novo terminal no ***CLIENTE_A*** e execute o comando abaixo:
+
+>
+    traceroute 1.1.1.1
+
+![CLIENTE_A TESTE CONTECTIVIDADE 1.1.1.1](../Img/CLIENTE_A-TESTE-INTERNET_ACCESS_4.png)
+
+**[!]** Observe que foi utilizada a Interface WAN1
+ 
