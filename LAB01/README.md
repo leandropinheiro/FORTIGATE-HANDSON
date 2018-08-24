@@ -13,6 +13,7 @@
 	* [Tarefa 02](#tarefa-02)
     * [Tarefa 03](#tarefa-03)
     * [Tarefa 04](#tarefa-04)
+    * [Tarefa 05](#tarefa-05)
 ***
 ### ***Objetivo***
 Neste lab o aluno será apresentado as configurações iniciais do ***FORTIGATE***, assim como aos comandos básicos para configurar a interface de gerencia via *CLI*.
