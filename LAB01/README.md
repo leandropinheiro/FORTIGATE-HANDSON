@@ -1,6 +1,7 @@
 # FORTIGATE v6.0 Hands On
 ## LAB 01
 
+***
 ### ***Índice***
 
 * [Objetivo](#objetivo)
@@ -10,22 +11,24 @@
 * [ATIVIDADES DO LAB 01](#atividades-do-lab-01)
 	* [Tarefa 01](#tarefa-01)
 	* [Tarefa 02](#tarefa-02)
-	
+***
 ### ***Objetivo***
 Neste lab o aluno será apresentado as configurações iniciais do ***FORTIGATE***, assim como aos comandos básicos para configurar a interface de gerencia via *CLI*.
 
 O aluno deve seguir os passos abaixo para poder configurar os ***FG*** dos *Sites A* e *B*.
-
+***
 ### ***Topologia do LAB***
 
 ![topologia do lab 01 ](../Img/TOPOLOGIA%20-%20LAB%2001.png)
 
+***
 #### ***FORTIGATES***
 HOSTNAME | Port1 | Port2 | Port3
 :-------:|:-----:|:-----:|:-----:
 FG_A|**(WAN1)** *192.168.100.1/24*|**(LAN)** *10.1.40.2/24*<br/>**(DMZ)** *172.16.0.254/24*|**(WAN2)** *192.168.110.1/24*
 FG_B|**(WAN1)** *192.168.200.1/24*|**(LAN)** *10.2.40.2/24*
 
+***
 #### ***ROTEADORES***
 HOSTNAME | e0/0 | e0/1 | 0/2 | e0/3
 :-------:|:----:|:----:|:---:|:---:
@@ -54,6 +57,7 @@ Os firewalls **FG_A** e **FG_B** não estão com qualquer configuração, nestes
 
 Os hosts **CLIENTE_A**, **CLIENTE_B**, **SERVER1**, **SERVER2** e **CLIENTE_EXTERNO** não tem nenhuma limitação, apesar de que a única configuração necessária em um LAB limpo, seria alterar o hostname padrão, nestes o cliente pode fazer atividade.
 
+***
 #### ***Credenciais de acesso***
 
 ##### ***ROTEADORES & SWITCHES***
@@ -68,7 +72,7 @@ Os hosts **CLIENTE_A**, **CLIENTE_B**, **SERVER1**, **SERVER2** e **CLIENTE_EXTE
 ***Username*** = *admin*  
 ***Password Padrão*** = *sem senha*  
 ***Password a configurar*** = *P@ssw0rd!*
-
+***
 ### ***Comandos utilizados no LAB***
 
 Abaixo alguns dos comandos necessários para executar o LAB, com as devidas explicações:
@@ -109,25 +113,26 @@ COMANDO | DESCRIÇÃO
 *show **módulo***| (fora do config) Exibe a configuração do ***módulo*** especificado
 *get **módulo*** | (fora do config) Obtém e exibe valores de processos do equipamento
 
+***
 ## ATIVIDADES DO LAB 01
 ### Tarefa 01
 
 O aluno deve executar as configurações iniciais no ***FG_A*** via *CLI*, para obter acesso a interface *WEB* do equipamento.
-
+***
 1. O aluno deve acessar o LAB 01.
-
+***
 2. Depois deve clicar em ***More actions***, e depois ***Start all nodes***
-
+***
 3. Aguardar os equipamentos mudarem da cor cinza para azul.
-
+***
 4. ***Clicar no icone do FG_A***.
 
 ![FG_A tela de login](../Img/FG_A-login.png)
-
+***
 5. Deve abrir uma sessão de terminal com o *prompt* de *login* do roteador ***FortiGate-VM64-KVM login:***
-
+***
 6. Efetue o login com as credenciais fornecidas acima.
-
+***
 7. Execute o script abaixo para alterar o Hostname:
 
 >
@@ -142,7 +147,7 @@ O aluno deve executar as configurações iniciais no ***FG_A*** via *CLI*, para 
     # Aplicar a configuração e sai
     #
     end
-    
+***
 8. Entra no modo de cofniguração de Interfaces e verificar quais portas estão disponíveis no equipamento
 
 >
@@ -190,7 +195,7 @@ Compare com a saída de exemplo abaixo:
             set snmp-index 5
         next
         end
-
+***
 9. Para configurar uma Interface ***LAN*** e associar a ***VLAN 40 - TRANSITO***, execute o script abaixo:
 
 >
@@ -225,7 +230,7 @@ Compare com a saída de exemplo abaixo:
     # Aplicar a configuração e sai
     #
     end
-
+***
 10. Verificar o Status e a Conectividade da Interface LAN:
 
 **a)** Verificar o Status da Interface LAN 
@@ -309,7 +314,7 @@ Compare com a saída abaixo:
 
     --- 10.1.20.101 ping statistics ---
     5 packets transmitted, 0 packets received, 100% packet loss
-
+***
 11. Para configurar uma rota para as redes locais do ***SITE A***, execute o script abaixo:
 
 **a)** Criar a Rota
@@ -398,33 +403,33 @@ Compare com a saída abaixo:
     --- 10.1.20.101 ping statistics ---
     5 packets transmitted, 5 packets received, 0% packet loss
     round-trip min/avg/max = 0.6/1.4/2.4 ms
-
+***
 ### Tarefa 02
 
 O aluno deve acessar a Interface *WEB* do ***FG_A***\.
-
+***
 1. O aluno deve acessar o ***CLIENTE_A***\.
 
 ![CLIENTE_A Tela de Login](../Img/CLIENTE_A-login.png)
-
+***
 2. Efetue login com as credênciais fornecidas no inicio do LAB
-
+***
 3. Abra o Navegador Firefox
 
 ![CLIENTE_A Localização do Firefox](../Img/CLIENTE_A-Firefox.png)
-
+***
 4. Digite o endereço 10.1.40.2 no Firefox para acessar a tela de Login do FortiGate FG_A, e efetue login com o usuário ***admin*** sem senha.
 
 ![CLIENTE_A FG_WEB Login](../Img/CLIENTE_A-FG_WEB_LOGIN.png)
-
+***
 5. Será exibida uma mensagem alertando que a senha dever alterada.
 
 ![FORTIGATE Password Warning](../Img/FG_PASSWORD_WARNING.png)
-
+***
 6. Altere o password para ***P@ssw0rd!***
 
 ![FORTIGATE PASSWORD CHANGE](../Img/FG_PASSWORD_CHANGE.png)
-
+***
 7. Efetue login com o usuário ***admin*** e a senha ***P@ssw0rd!***
 
 ![FORTIGAGE FAZER LOGIN COM NOVAS CREDENCIAIS](../Img/CLIENTE_A-FG_WEB_LOGIN_2.png)
@@ -432,11 +437,11 @@ O aluno deve acessar a Interface *WEB* do ***FG_A***\.
 Se o Login for bem sucedido o Fortigate ***FG_A*** deve redirecionar para uma página exibindi o *Dashboard*\.
 
 ![FORTIGATE FG_A Página do Dashboard](../Img/FG_A-DASHBOARD_1.png)
-
+***
 ### Tarefa 03
 
 O aluno deve completar a configuração do ***FG_A*** para permitir o acesso dos Hosts do ***SITE A*** a *Internet*\.
-
+***
 1. Configurar a uma nova Interface ***DMZ***\:
 
 **a)** Acessar a configuração de uma nova Interface:
@@ -468,7 +473,7 @@ O aluno deve completar a configuração do ***FG_A*** para permitir o acesso dos
 *Network*: ***255.255.255.0***
 
 Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
-
+***
 2. Verificar se o ***SERVIDOR2*** obtem IP e acessa o IP da Interface DMZ do ***FG_A***\.
 
 **a)** Efetuar login no ***SERVIDOR2*** com as credencias informadas no inicio do LAB.
@@ -482,7 +487,7 @@ Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
 **c)** Execute um ping para o IP da Interface *DMZ* do ***FG_A***, depois de algumas respostas tecle ***CTRL+C*** para interromper.
 
 ![SERVER 2 executar ping no IP da DMZ do FG_A](../Img/SERVER2-ping-FG_A-DMZ_1.png)
-
+***
 3. Criar um *Lease DHCP Fixo* (Reserva) para o ***SERVER2*** no ***FG_A***\:
 
 **a)** Selecione a Interface *DMZ* e clique no botão *Edit*
@@ -510,7 +515,7 @@ Clique no botão ***OK***
 **e)** Acesse o ***SERVER2***, execute o comando **sudo netplan apply** para renovar o IP, e depis **ip a** para verificar se obteve o IP Reservado.
 
 ![SERVER2 verificar alterações na Interface ens3](../Img/SERVER2-ip_a-ens3_3.png)
-
+***
 4. Configurar Interfaces *WAN1* no ***FG_A***\.
 
 **a)** Em **Network > Interfaces > *Port1*** selecione *Edit*
@@ -529,7 +534,7 @@ Prencha os campos com as informações Abaixo:
 *Administrative Access (IPv4)*: ***PING***
 
 Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
-
+***
 5. Configurar Interfaces *WAN2* no ***FG_A***\.
 
 **a)** Em **Network > Interfaces > *Port3*** selecione *Edit*
@@ -548,7 +553,7 @@ Prencha os campos com as informações Abaixo:
 *Administrative Access (IPv4)*: ***PING***
 
 Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
-
+***
 6. Configurar rota default para *WAN1* no ***FG_A***\.
 
 **a)** Em **Network > Static Routes** clique em *+ Create New*
@@ -586,7 +591,7 @@ Espere alguns segundos e use a combinação de telcas **CTRL+C**\.
 ![CLIENTE_A VERIFICAR ACESSO A INTERTNET](../Img/CLIENTE_A-TESTE-INTERNET_ACCESS_1.png)
 
 O ***CLIENTE_A*** ainda não tem acesso a *Internet*\.
-
+***
 7. Criar uma *Regra (Policy) de Acesso* permitindo o acesso das Redes Locais do **SITE_A** para a *Internet*\.
 
 **a)** Em **Policy & Objects > Addresses** clique em *+ Create New | Address*\.
@@ -669,7 +674,7 @@ Espere alguns segundos e use a combinação de telcas **CTRL+C**\.
 ![CLIENTE_A VERIFICAR ACESSO A INTERTNET](../Img/CLIENTE_A-TESTE-INTERNET_ACCESS_2.png)
 
 *Ignorar a perda de pacotes, é o problema no meu acesso a Internet*\.
-
+***
 8. Aplicar uma Licença no ***FG_A***\.
 
 **a)** Em **Dashboard > Main** clique em *FGVMEV License | FortiGate VM License*\.
@@ -695,11 +700,11 @@ Espere alguns segundos e use a combinação de telcas **CTRL+C**\.
 **f)** Confira se a Licença foi aplicada corretamente.
 
 ![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-LICENSE_4.png)
-
+***
 ### TAREFA 04
 
 O aluno deve completar a configuração do **SD-WAN** no ***FG_A*** para permitir o acesso dos Hosts do ***SITE A*** a *Internet* por ambas as Interfaces *WAN*\.
-
+***
 1. Ativar Interface **SD-WAN** no ***FG_A***\.
 
 Ativando o SD-WAN o FG_A pode utilizar todas as Interfaces WAN para o Trafego.
