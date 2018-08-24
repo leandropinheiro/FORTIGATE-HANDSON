@@ -676,29 +676,32 @@ Espere alguns segundos e use a combinação de telcas **CTRL+C**\.
 
 ![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-DASHBOARD-License_1.png)
 
-Clique no botão **+ Upload**\.
+**b)** Clique no botão **+ Upload**\.
 
 ![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-LICENSE_1.png)
 
-Selecione o Arquivo da .LIC correto.
+**c)** Selecione o Arquivo da .LIC correto.
 
 ![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-LICENSE_2.png)
 
-Clique no botão **OK** para aplicar.
+**d)** Clique no botão **OK** para aplicar.
 
 ![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-LICENSE_3.png)
 
-**b)** Aguarde o ***FG_A*** reiniciar.
+**e)** Aguarde o ***FG_A*** reiniciar.
 
 ![FORTIGATE FG_A REBOOT](../Img/FG_A-REBOOT_1.png)
 
-**c)** Confira se a Licença foi aplicada corretamente.
+**f)** Confira se a Licença foi aplicada corretamente.
 
 ![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-LICENSE_4.png)
 
 ### TAREFA 04
 
-9. Ativar Interface **SD-WAN** no ***FG_A***\.
+O aluno deve completar a configuração do **SD-WAN** no ***FG_A*** para permitir o acesso dos Hosts do ***SITE A*** a *Internet* por ambas as Interfaces *WAN*\.
+
+1. Ativar Interface **SD-WAN** no ***FG_A***\.
 
 Ativando o SD-WAN o FG_A pode utilizar todas as Interfaces WAN para o Trafego.
+
 
