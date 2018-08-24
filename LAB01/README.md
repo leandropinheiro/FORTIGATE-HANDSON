@@ -11,6 +11,8 @@
 * [ATIVIDADES DO LAB 01](#atividades-do-lab-01)
 	* [Tarefa 01](#tarefa-01)
 	* [Tarefa 02](#tarefa-02)
+    * [Tarefa 03](#tarefa-03)
+    * [Tarefa 04](#tarefa-04)
 ***
 ### ***Objetivo***
 Neste lab o aluno será apresentado as configurações iniciais do ***FORTIGATE***, assim como aos comandos básicos para configurar a interface de gerencia via *CLI*.
@@ -801,7 +803,7 @@ Clique no botão **OK** para aplicar a alteração.
 
 **c)** Prencha os campos com as informações abaixo:
 
-**[!]** Observe que a Interface WAN1 aogra aparece na lista de Interfaces disponíveis.
+**[!]** Observe que a Interface WAN1 agora aparece na lista de Interfaces disponíveis.
 
 *Interface*: ***WAN1 (port1)***  
 *Gateway*: ***192.168.100.254***  
@@ -817,7 +819,7 @@ Clique no botão **Apply** para aplicar a configuração.
 
 **b)** Alterar o *Load Balancing Algorithm* para **Source-Destination IP**\.
 
-[FORTIGATE FG_A HABILITAR SD-WAN](../Img/FG_A-SD-WAN_5.png)
+![FORTIGATE FG_A HABILITAR SD-WAN](../Img/FG_A-SD-WAN_5.png)
 
 Clique no botão **OK** para aplicar a alteração.
 
@@ -842,3 +844,124 @@ Clique no botão **OK** para aplicar a alteração.
 
 **[!]** Observe que foi utilizada a Interface WAN1
  
+ ***
+ ### TAREFA 05
+
+ Vamos aplicar o que aprendemos nas tarefas anterios para configurar o ***FG_B***\.
+
+***
+ 1. Configuração inicial via *CLI* do ***FG_B***\.
+ 
+ **a)** Abrir a console do ***FG_B*** aplicar o script abaixo: 
+
+ >
+    config system global
+    set hostname FG_B
+    end
+
+    config system interface
+    edit port2
+    set alias "LAN"
+    set allowaccess ping https ssh http fgfm
+    set ip 10.2.40.2/24
+    end
+
+    config router static
+    edit 0
+    set dst 10.2.0.0/16
+    set device port2
+    set gateway 10.2.40.1
+    end
+
+**b)** Verificar a conectividade com o Host ***CLIENTE_B***\: 
+
+>
+    execute ping 10.2.20.101
+
+Compare com a saída abaixo:
+
+>
+    FG_B # execute ping 10.2.20.101
+    PING 10.2.20.101 (10.2.20.101): 56 data bytes
+    64 bytes from 10.2.20.101: icmp_seq=0 ttl=63 time=0.9 ms
+    64 bytes from 10.2.20.101: icmp_seq=1 ttl=63 time=0.6 ms
+    64 bytes from 10.2.20.101: icmp_seq=2 ttl=63 time=1.2 ms
+    64 bytes from 10.2.20.101: icmp_seq=3 ttl=63 time=0.7 ms
+    64 bytes from 10.2.20.101: icmp_seq=4 ttl=63 time=0.9 ms
+
+    --- 10.2.20.101 ping statistics ---
+    5 packets transmitted, 5 packets received, 0% packet loss
+    round-trip min/avg/max = 0.6/0.8/1.2 ms
+
+***
+2. Configurar interface **SD-WAN** no ***FG_B***\.
+
+**a)** Acessar a Interface WEB do ***FG_B*** via http://10.2.40.2 no Host ***CLIENTE_B***\.
+
+**b)** **Em Network > Interfaces** selecione a Interface ***port1*** e clique no botão **Edit**\.
+
+**c)** Prencha os campos com as informações abaixo:
+
+*Alias*: ***WAN***  
+*Role*: ***WAN***  
+*Addressing mode*: ***Manual***  
+*IP/Network Mask*: ***192.168.200.1/24***  
+*Administrative Access IPv4*: ***PING***  
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+**d)** Em **Network > SD-WAN** alterar *Status* para **Enable**\.
+
+**e)** Adicione a Interface **WAN (port1)** como *SD-WAN Interface Members*\.
+
+**f)** No campo *Gateway* entre o endereço IP **192.168.200.254**\.
+
+**g)** Clique no botão **Apply** para aplicar as alterações\.
+
+***
+3. Criar *Rota Default* no ***FG_B***\.
+
+**a)** Em **Network > Static Routes** clique no botão **+ Create New**\.
+
+**b)** Altere o campo *Interface* para ***SD-WAN***\.
+
+**c)** Clique no botão **OK** para aplicar a configuração\.
+
+***
+4. Criar *Object Address* e *Policy IPv4* permitindo a **LAN** do **SITE_B** acessar a Internet\.
+
+**a)** Em **Policy & Objects > Addresses** clicar no botão **+ Create New | Address**\.
+
+**b)** Prencha os campos com as informações abaixo:
+
+*Name*: ***SITE_B_LAN_NET***  
+*Type*: ***Subnet***  
+*Subent / IP Range*: ***10.2.20.0/24***  
+*Interface*: ***LAN (port2)***  
+*Comments*: ***SITE_B LAN Subnet***
+
+**c)** Clique no botão **OK** para aplicar a configuração\.
+
+**d)** Em **Policy & Objects > IPv4 Policy** clicar no botão **+ Create New**\.
+
+**e)** Prencha os campos com as informações abaixo:
+
+*Name*: ***LAN-to-WAN***  
+*Incoming Interface*: ***LAN (port2)***  
+*Outgoing Interface*: ***SD-WAN***  
+*Source*: ***SITE_B_LAN_NET***  
+*Destination*: ***all***  
+*Service*: ***ALL***  
+*Comments*: ***Permite acesso das Subnets da Interface LAN a Internet via SD-WAN***
+
+**f)** Clique no botão **OK** para aplicar a configuração\.
+
+***
+5. Validar o acesso a Internet do ***CLIENTE_B***\.
+
+**a)** Abra um novo terminal no ***CLIENTE_B*** e execute o comando abaixo:
+
+>
+    ping 8.8.8.8
+
+![CLIENTE_A TESTE CONTECTIVIDADE 8.8.8.8](../Img/CLIENTE_B-TESTE-INTERNET_ACCESS_1.png)
