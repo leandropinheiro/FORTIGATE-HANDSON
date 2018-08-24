@@ -508,3 +508,127 @@ Acesse o ***SERVER2***, execute o comando **sudo netplan apply** para renovar o 
 
 ![SERVER2 verificar alterações na Interface ens3](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ip_a-ens3_3.png)
 
+4. Configurar Interfaces *WAN1* no ***FG_A***\.
+
+Em **Network > Interfaces > *Port1*** selecione *Edit*
+
+![FORTIGATE FG_A EDITAR PORT1](../Img/FG_A-edit-WAN1(port1)_1.png)
+
+Prencha os campos com as informações Abaixo:
+
+*Alias*: ***WAN1***
+
+*Addressing mode*: ***Manual***  
+*IP/Network Mask*: ***192.168.100.1/24***
+
+*Role*: ***WAN***
+
+*Administrative Access (IPv4)*: ***PING***
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+5. Configurar Interfaces *WAN2* no ***FG_A***\.
+
+Em **Network > Interfaces > *Port3*** selecione *Edit*
+
+![FORTIGATE FG_A EDITAR PORT3](../Img/FG_A-edit-WAN2(port3)_1.png)
+
+Prencha os campos com as informações Abaixo:
+
+*Alias*: ***WAN2***
+
+*Addressing mode*: ***Manual***  
+*IP/Network Mask*: ***192.168.110.1/24***
+
+*Role*: ***WAN***
+
+*Administrative Access (IPv4)*: ***PING***
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+6. Configurar rota default para *WAN1* no ***FG_A***\.
+
+Em **Network > Static Routes** clique em *+ Create New*
+
+![FORTIGATE FG_A CRIAR ROTA ESTATICA DEFAULT WAN1](../Img/FG_A-ROUTER_STATIC-WAN1(port1)_1.png)
+
+Prencha os campos com as informações Abaixo:
+
+*Destination*: ***Subnet | 0.0.0.0/0.0.0.0***  
+*Gateway*: ***192.168.100.254***  
+*Interface*: ***WAN1 (port1)***
+
+![FORTIGATE FG_A CRIAR ROTA ESTATICA DEFAULT WAN1](../Img/FG_A-ROUTER_STATIC-WAN1(port1)_2.png)
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+Verificar se o ***FG_A*** tem acesso a *Internet*.
+
+Clique no icone [ **>_** ] e execute o comando abaixo:
+
+>
+    execute ping 8.8.8.8
+
+![FORTIGATE FG_A TESTAR INTERNET VIA WAN1](../Img/FG_A-TESTE-INTERNET_ACCESS_1.png)
+
+Verificar se o ***CLIENTE_A*** tem acesso a *Internet*.
+
+Abra um novo terminal, clicando no icone indicado na imagem, e execute o comando abaixo:
+
+>
+    ping 8.8.8.8
+
+Espere alguns segundos e use a combinação de telcas **CTRL+C**\.
+
+![](../Img/CLIENTE_A-TESTE-INTERNET_ACCESS_1.png)
+
+O ***CLIENTE_A*** ainda não tem acesso a *Internet*\.
+
+7. Criar uma *Regra (Policy) de Acesso* permitindo o acesso das Redes Locais do **SITE_A** para a *Internet*\.
+
+Em **Policy & Objects > Addresses** clique em *+ Create New | Address*\.
+
+Vamos criar os Objetos correspondente as Redes para facilitar a criação das Regras.
+
+![FORTIGATE FG_A CRIAR NOVO OBJETO ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_1.png)
+
+Prencha os campos com as informações Abaixo:
+
+*Name*: ***SITE_A_LAN_NET***  
+*Subnet / IP Range*: ***10.1.20.0/24***  
+*Interface*: ***LAN***  
+*Comments*: ***SITE_A LAN Subnet***
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+Em **Policy & Objects > Addresses** clique em *+ Create New | Address*\.
+
+Prencha os campos com as informações Abaixo:
+
+*Name*: ***SITE_A_SERVIDORES_NET***  
+*Subnet / IP Range*: ***10.1.10.0/24***  
+*Interface*: ***LAN***  
+*Comments*: ***SITE_A SERVIDORES Subnet***
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+Em **Policy & Objects > Addresses** clique em *+ Create New | Address*\.
+
+*Name*: ***SITE_A_DMZ_NET***  
+*Subnet / IP Range*: ***172.16.0.0/24***  
+*Interface*: ***DMZ (VLAN30)***  
+*Comments*: ***SITE_A DMZ Subnet***
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+Em **Policy & Objects > Addresses** clique em *+ Create New | Address Group*\.
+
+![FORTIGATE FG_A CRIAR NOVO OBJETO ADDRESS GROUP](../Img/FG_A-create-OBJECT_ADDRESS_2.png)
+
+Name*: ***SITE_A_DMZ_NET***  
+*Subnet / IP Range*: ***172.16.0.0/24***  
+*Interface*: ***DMZ (VLAN30)***  
+*Comments*: ***SITE_A DMZ Subnet***
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
