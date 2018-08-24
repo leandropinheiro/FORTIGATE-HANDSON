@@ -18,7 +18,7 @@ O aluno deve seguir os passos abaixo para poder configurar os ***FG*** dos *Site
 
 ### ***Topologia do LAB***
 
-![topologia do lab 01 ](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/TOPOLOGIA%20-%20LAB%2001.png)
+![topologia do lab 01 ](../Img/TOPOLOGIA%20-%20LAB%2001.png)
 
 #### ***FORTIGATES***
 HOSTNAME | Port1 | Port2 | Port3
@@ -122,7 +122,7 @@ O aluno deve executar as configurações iniciais no ***FG_A*** via *CLI*, para 
 
 4. ***Clicar no icone do FG_A***.
 
-![FG_A tela de login](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-login.png)
+![FG_A tela de login](../Img/FG_A-login.png)
 
 5. Deve abrir uma sessão de terminal com o *prompt* de *login* do roteador ***FortiGate-VM64-KVM login:***
 
@@ -402,33 +402,33 @@ O aluno deve acessar a Interface *WEB* do ***FG_A***\.
 
 1. O aluno deve acessar o ***CLIENTE_A***\.
 
-![CLIENTE_A Tela de Login](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-login.png)
+![CLIENTE_A Tela de Login](../Img/CLIENTE_A-login.png)
 
 2. Efetue login com as credênciais fornecidas no inicio do LAB
 
 3. Abra o Navegador Firefox
 
-![CLIENTE_A Localização do Firefox](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-Firefox.png)
+![CLIENTE_A Localização do Firefox](../Img/CLIENTE_A-Firefox.png)
 
 4. Digite o endereço 10.1.40.2 no Firefox para acessar a tela de Login do FortiGate FG_A, e efetue login com o usuário ***admin*** sem senha.
 
-![CLIENTE_A FG_WEB Login](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-FG_WEB_LOGIN.png)
+![CLIENTE_A FG_WEB Login](../Img/CLIENTE_A-FG_WEB_LOGIN.png)
 
 5. Será exibida uma mensagem alertando que a senha dever alterada.
 
-![FORTIGATE Password Warning](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_PASSWORD_WARNING.png)
+![FORTIGATE Password Warning](../Img/FG_PASSWORD_WARNING.png)
 
 6. Altere o password para ***P@ssw0rd!***
 
-![FORTIGATE PASSWORD CHANGE](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_PASSWORD_CHANGE.png)
+![FORTIGATE PASSWORD CHANGE](../Img/FG_PASSWORD_CHANGE.png)
 
 7. Efetue login com o usuário ***admin*** e a senha ***P@ssw0rd!***
 
-![FORTIGAGE FAZER LOGIN COM NOVAS CREDENCIAIS](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/CLIENTE_A-FG_WEB_LOGIN_2.png)
+![FORTIGAGE FAZER LOGIN COM NOVAS CREDENCIAIS](../Img/CLIENTE_A-FG_WEB_LOGIN_2.png)
 
 Se o Login for bem sucedido o Fortigate ***FG_A*** deve redirecionar para uma página exibindi o *Dashboard*\.
 
-![FORTIGATE FG_A Página do Dashboard](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-DASHBOARD_1.png)
+![FORTIGATE FG_A Página do Dashboard](../Img/FG_A-DASHBOARD_1.png)
 
 ### Tarefa 03
 
@@ -438,7 +438,7 @@ O aluno deve completar a configuração do ***FG_A*** para permitir o acesso dos
 
 Acessar a configuração de uma nova Interface:
 
-![FORTIGATE FG_A Criar nova Interface](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-CREATE_NEW_INTERFACE.png)
+![FORTIGATE FG_A Criar nova Interface](../Img/FG_A-CREATE_NEW_INTERFACE.png)
 
 Prencha os campos com as informações Abaixo:
 
@@ -470,29 +470,29 @@ Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
 
 Efetuar login no ***SERVIDOR2*** com as credencias informadas no inicio do LAB.
 
-![SERVER2 Login Prompt](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-Login.png)
+![SERVER2 Login Prompt](../Img/SERVER2-Login.png)
 
 Utilize o comando ***ip a*** para verificar as configurações da Interface ***ens3***
 
-![SERVER2 verificar ip da Interface ens3](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ip_a-ens3_1.png)
+![SERVER2 verificar ip da Interface ens3](../Img/SERVER2-ip_a-ens3_1.png)
 
 Execute um ping para o IP da Interface *DMZ* do ***FG_A***, depois de algumas respostas tecle ***CTRL+C*** para interromper.
 
-![SERVER 2 executar ping no IP da DMZ do FG_A](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ping-FG_A-DMZ_1.png)
+![SERVER 2 executar ping no IP da DMZ do FG_A](../Img/SERVER2-ping-FG_A-DMZ_1.png)
 
 3. Criar um *Lease DHCP Fixo* (Reserva) para o ***SERVER2*** no ***FG_A***\:
 
 Selecione a Interface *DMZ* e clique no botão *Edit*
 
-![FORTIGAGE FG_A selecionar DMZ para edição](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-edit-DMZ_1.png)
+![FORTIGAGE FG_A selecionar DMZ para edição](../Img/FG_A-edit-DMZ_1.png)
 
 Navegue até a seção de DHCP e expanda ***\+ Advanced***
 
-![FORTIGATE FG_A Edição DMZ seção DHCP + Advanced](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-edit-DMZ-DHCP_ADVANCED_1.png)
+![FORTIGATE FG_A Edição DMZ seção DHCP + Advanced](../Img/FG_A-edit-DMZ-DHCP_ADVANCED_1.png)
 
 Execute o comando **ip a** no ***SERVER2*** e anote o *MAC Address* da Interface *ens3*\.
 
-![SERVER2 Interface ens3 MAC Address](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ip_a-ens3_2.png)
+![SERVER2 Interface ens3 MAC Address](../Img/SERVER2-ip_a-ens3_2.png)
 
 Retorne a Interface *WEB* do ***FG_A*** e navegue até a **MAC Reservation + Access Control**, preencha com os dados abaixo:
 
@@ -500,13 +500,13 @@ Retorne a Interface *WEB* do ***FG_A*** e navegue até a **MAC Reservation + Acc
 *Action or IP*: ***Reserve IP | 172.16.0.10***  
 *Description*: ***SERVER2***
 
-![FORTIGATE FG_A Criar Reserva SERVER2](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/FG_A-edit-DMZ-DHCP_ADVANCED_2.png)
+![FORTIGATE FG_A Criar Reserva SERVER2](../Img/FG_A-edit-DMZ-DHCP_ADVANCED_2.png)
 
 Clique no botão ***OK***
 
 Acesse o ***SERVER2***, execute o comando **sudo netplan apply** para renovar o IP, e depis **ip a** para verificar se obteve o IP Reservado.
 
-![SERVER2 verificar alterações na Interface ens3](https://raw.githubusercontent.com/leandropinheiro/FORTIGATE-HANDSON/master/Img/SERVER2-ip_a-ens3_3.png)
+![SERVER2 verificar alterações na Interface ens3](../Img/SERVER2-ip_a-ens3_3.png)
 
 4. Configurar Interfaces *WAN1* no ***FG_A***\.
 
@@ -580,7 +580,7 @@ Abra um novo terminal, clicando no icone indicado na imagem, e execute o comando
 
 Espere alguns segundos e use a combinação de telcas **CTRL+C**\.
 
-![](../Img/CLIENTE_A-TESTE-INTERNET_ACCESS_1.png)
+![CLIENTE_A VERIFICAR ACESSO A INTERTNET](../Img/CLIENTE_A-TESTE-INTERNET_ACCESS_1.png)
 
 O ***CLIENTE_A*** ainda não tem acesso a *Internet*\.
 
@@ -625,10 +625,71 @@ Em **Policy & Objects > Addresses** clique em *+ Create New | Address Group*\.
 
 ![FORTIGATE FG_A CRIAR NOVO OBJETO ADDRESS GROUP](../Img/FG_A-create-OBJECT_ADDRESS_2.png)
 
-Name*: ***SITE_A_DMZ_NET***  
-*Subnet / IP Range*: ***172.16.0.0/24***  
-*Interface*: ***DMZ (VLAN30)***  
-*Comments*: ***SITE_A DMZ Subnet***
+Prencha os campos com as informações Abaixo:
+
+Name*: ***SITE_A_LAN_NETS***  
+*Members*: ***SITE_A_LAN_NET | SITE_A_SERVIDORES_NET***  
+*Comments*: ***SITE_A ALL LAN Subnets***
 
 Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+Em **Policy & Objects > IPv4 Policy** clique em *+ Create New*\.
+
+![FORTIGATE FG_A CRIAR NOVA IPv4 POLICY](../Img/FG_A-create-IPv4_POLICY_1.png)
+
+Prencha os campos com as informações Abaixo:
+
+*Name*: ***LAN-to-WAN***  
+*Incoming Interface*: ***LAN***  
+*Outgoing Interface*: ***WAN1 (port1)***  
+*Source*: ***SITE_A_LAN_NETS***  
+*Destination*: ***all***  
+*Service*: ***ALL***  
+*Action*: ***ACCEPT***  
+
+*NAT*: ***ENABLED***  
+*IP Pool Configuration*: ***Use Outgoing Interface Address***
+
+*Comments*: ***Permite acesso das Subnets da Interface LAN a Internet via WAN1***
+
+Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
+
+Verificar se o ***CLIENTE_A*** tem acesso a *Internet*.
+
+Abra um novo terminal, clicando no icone indicado na imagem, e execute o comando abaixo:
+
+>
+    ping 8.8.8.8
+
+Espere alguns segundos e use a combinação de telcas **CTRL+C**\.
+
+![CLIENTE_A VERIFICAR ACESSO A INTERTNET](../Img/CLIENTE_A-TESTE-INTERNET_ACCESS_2.png)
+
+*Ignorar a perda de pacotes, é o problema no meu acesso a Internet*\.
+
+8. Aplicar uma Licença no ***FG_A***\.
+
+Em **Dashboard > Main** clique em *FGVMEV License | FortiGate VM License*\.
+
+![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-DASHBOARD-License_1.png)
+
+Clique no botão **+ Upload**\.
+
+![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-LICENSE_1.png)
+
+Selecione o Arquivo da .LIC correto.
+
+![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-LICENSE_2.png)
+
+Clique no botão **OK** para aplicar.
+
+![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-LICENSE_3.png)
+
+Aguarde o ***FG_A*** reiniciar.
+
+![FORTIGATE FG_A REBOOT](../Img/FG_A-REBOOT_1.png)
+
+Confira se a Licença foi aplicada corretamente.
+
+![FORTIGATE FG_A DASHBOARD LICENSE](../Img/FG_A-LICENSE_4.png)
 
