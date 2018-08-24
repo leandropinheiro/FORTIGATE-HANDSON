@@ -966,3 +966,19 @@ Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
     ping 8.8.8.8
 
 ![CLIENTE_A TESTE CONTECTIVIDADE 8.8.8.8](../Img/CLIENTE_B-TESTE-INTERNET_ACCESS_1.png)
+
+***
+6. Aplicar uma Licença no ***FG_B***\.
+
+**a)** Em **Dashboard > Main** clique em *FGVMEV License | FortiGate VM License*\.
+
+**b)** Clique no botão **+ Upload**\.
+
+
+**c)** Selecione o Arquivo  **~\Downloads\FGVM010000167606.lic**\.
+
+**d)** Clique no botão **OK** para aplicar.
+
+**e)** Aguarde o ***FG_B*** reiniciar.
+
+**f)** Confira se a Licença foi aplicada corretamente.
