@@ -14,6 +14,8 @@
     * [Tarefa 03](#tarefa-03)
     * [Tarefa 04](#tarefa-04)
     * [Tarefa 05](#tarefa-05)
+    * [Tarefa 06](#tarefa-06)
+    * [Tarefa 07](#tarefa-07)
 ***
 ### ***Objetivo***
 Neste lab o aluno será apresentado as configurações iniciais do ***FORTIGATE***, assim como aos comandos básicos para configurar a interface de gerencia via *CLI*.
@@ -988,11 +990,11 @@ Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
  Vamos configurar uma VPN *SITE-to-SITE* entre o **SITE_A** e o **SITE_B**\.
 
 ***
- 1. Configurae a *VPN SITE-to-SITE* no ***FG_A***\.
+ 1. Configurar a *VPN SITE-to-SITE* no ***FG_A***\.
 
- **a)** Em **VPN > IPsec Wizard**, prencha os campos com as informações abaixo\:
+ **a)** Em **VPN > IPsec Wizard > (1) VPN Setup**, prencha os campos com as informações abaixo\:
 
-*Name*: ***SITE_A-to-B***  
+*Name*: ***SITE_A-to-B-W1***  
 *Template Type*: ***Site to Site***  
 *Remote Device Type*: ***FortiGate***  
 *NAT Configuration*: ***No NAT between sites***  
@@ -1001,4 +1003,204 @@ Clique no botão **Next >** para prosseguir\.
 
 ![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-SITE2SITE_1.png)
  
+**b)** Em **(2) Authentication**, prencha os campos com as informações abaixo\:
+
+*Remote Device*: ***IP Address***  
+*IP Address*: ***192.168.200.1*** (endereço WAN do FG_B)  
+*Outgoing Interface*: ***WAN1 (port1)***  
+*Authentication Method*: ***Pre-shared Key***  
+*Pre-shared Key*: ***P@ssw0rd!***
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-SITE2SITE_2.png)
+
+**c)** Em **(3) Authentication**, prencha os campos com as informações abaixo\:
+
+*Local Interface*: ***LAN***  
+*Local Subnets*: ***10.1.20.0/24***    
+*Remote Subnets*: ***10.2.20.0./24***  
+*Internet Access*: ***None***  
+
+Clique no botão **Create** para concluir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-SITE2SITE_3.png)
+
+**d)** Em **VPN > IPsec Wizard > (1) VPN Setup**, prencha os campos com as informações abaixo\:
+
+*Name*: ***SITE_A-to-B-W2***  
+*Template Type*: ***Site to Site***  
+*Remote Device Type*: ***FortiGate***  
+*NAT Configuration*: ***No NAT between sites***  
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-SITE2SITE_4.png)
  
+**e)** Em **(2) Authentication**, prencha os campos com as informações abaixo\:
+
+*Remote Device*: ***IP Address***  
+*IP Address*: ***192.168.200.1*** (endereço WAN do FG_B)  
+*Outgoing Interface*: ***WAN2 (port3)***  
+*Authentication Method*: ***Pre-shared Key***  
+*Pre-shared Key*: ***P@ssw0rd!***
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-SITE2SITE_5.png)
+
+**f)** Em **(3) Authentication**, prencha os campos com as informações abaixo\:
+
+*Local Interface*: ***LAN***  
+*Local Subnets*: ***10.1.20.0/24***    
+*Remote Subnets*: ***10.2.20.0./24***  
+*Internet Access*: ***None***  
+
+Clique no botão **Create** para concluir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-SITE2SITE_6.png)
+
+**g)** Alterar *Object Address* **SITE_A_DMZ_NET**:
+
+Quando criamos o *Object Address* ***SITE_A_DMZ_NET***, associamos o mesmo a interface ***DMZ***, com isso esse Objecto só pode ser adicionado a *Objects Address Group* que utilizem a mesma interface.
+
+Como precisamos adicionar adicionar o **SITE_A_DMZ_NET** nos grupos criados pelo **Wizard VPN**, temos que alterar a interface para **any**\.
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_3.png)
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_4.png)
+
+**h)** Alterar *Object Address* **SITE_A_SERVIDORES_NET**:
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_5.png)
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_6.png)
+
+**i)** Alterar *Object Address Group* criados pelo **Wizard VPN**\:
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_7.png)
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_8.png)
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_9.png)
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_10.png)
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_11.png)
+
+![FORTIGATE FG-A ALTERAR OBJECT ADDRESS](../Img/FG_A-create-OBJECT_ADDRESS_12.png)
+
+***
+2. Configurar a *VPN SITE-to-SITE* no ***FG_B***\.
+
+**a)** Em **VPN > IPsec Wizard > (1) VPN Setup**, prencha os campos com as informações abaixo\:
+
+*Name*: ***SITE_B-to-A-W1***  
+*Template Type*: ***Site to Site***  
+*Remote Device Type*: ***FortiGate***  
+*NAT Configuration*: ***No NAT between sites***  
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_B-create-VPN-SITE2SITE_1.png)
+ 
+**b)** Em **(2) Authentication**, prencha os campos com as informações abaixo\:
+
+*Remote Device*: ***IP Address***  
+*IP Address*: ***192.168.100.1*** (endereço WAN1 do FG_A)  
+*Outgoing Interface*: ***WAN1 (port1)***  
+*Authentication Method*: ***Pre-shared Key***  
+*Pre-shared Key*: ***P@ssw0rd!***
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_B-create-VPN-SITE2SITE_2.png)
+
+**c)** Em **(3) Authentication**, prencha os campos com as informações abaixo\:
+
+*Local Interface*: ***LAN (port2)***  
+*Local Subnets*: ***10.2.20.0/24***    
+*Remote Subnets*: ***10.1.10.0./24 | 10.1.20.0/24 | 172.16.0.0/24***  
+*Internet Access*: ***None***  
+
+Clique no botão **Create** para concluir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_B-create-VPN-SITE2SITE_3.png)
+ 
+ **d)** Em **VPN > IPsec Wizard > (1) VPN Setup**, prencha os campos com as informações abaixo\:
+
+*Name*: ***SITE_B-to-A-W2***  
+*Template Type*: ***Site to Site***  
+*Remote Device Type*: ***FortiGate***  
+*NAT Configuration*: ***No NAT between sites***  
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_B-create-VPN-SITE2SITE_4.png)
+ 
+**b)** Em **(2) Authentication**, prencha os campos com as informações abaixo\:
+
+*Remote Device*: ***IP Address***  
+*IP Address*: ***192.168.110.1*** (endereço WAN2 do FG_A)  
+*Outgoing Interface*: ***WAN1 (port1)***  
+*Authentication Method*: ***Pre-shared Key***  
+*Pre-shared Key*: ***P@ssw0rd!***
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_B-create-VPN-SITE2SITE_5.png)
+
+**c)** Em **(3) Authentication**, prencha os campos com as informações abaixo\:
+
+*Local Interface*: ***LAN (port2)***  
+*Local Subnets*: ***10.2.20.0/24***    
+*Remote Subnets*: ***10.1.10.0./24 | 10.1.20.0/24 | 172.16.0.0/24***  
+*Internet Access*: ***None***  
+
+Clique no botão **Create** para concluir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_B-create-VPN-SITE2SITE_6.png)
+
+***
+3. Testar Conectividade do ***CLIENTE_B*** para os recursos do ***SITE_A***\.
+
+**a)** Efetuar ping para o host ***CLIENTE_A*** (10.1.20.101)\:
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/CLIENTE_B-TESTE-VPN_ACCESS_1.png)
+
+**b)** Efetuar ping para o host ***SERVER1*** (10.1.10.10)\:
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/CLIENTE_B-TESTE-VPN_ACCESS_2.png)
+
+**c)** Efetuar ping para o host ***SERVER2*** (172.16.0.10)\:
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/CLIENTE_B-TESTE-VPN_ACCESS_3.png)
+
+**b)** Acessar o host ***SERVER1*** (10.1.10.10) via HTTP\:
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/CLIENTE_B-TESTE-VPN_ACCESS_4.png)
+
+**c)** Acessar o host ***SERVER2*** (172.16.0.10) via HTTP\:
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/CLIENTE_B-TESTE-VPN_ACCESS_5.png)
+
+***
+ ### TAREFA 07
+
+ Vamos configurar uma VPN *SITE-to-SITE* entre o **SITE_A** e o **SITE_B**\.
+
+***
+ 1. Configurar a *VPN SITE-to-SITE* no ***FG_A***\.
+
+ **a)** Em **VPN > IPsec Wizard > (1) VPN Setup**, prencha os campos com as informações abaixo\:
+
+*Name*: ***SITE_A-to-B-W1***  
+*Template Type*: ***Site to Site***  
+*Remote Device Type*: ***FortiGate***  
+*NAT Configuration*: ***No NAT between sites***  
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-SITE2SITE_1.png)
+ 
+
