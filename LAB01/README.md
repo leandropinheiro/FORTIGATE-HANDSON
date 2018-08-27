@@ -974,7 +974,6 @@ Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
 
 **b)** Clique no botão **+ Upload**\.
 
-
 **c)** Selecione o Arquivo  **~\Downloads\FGVM010000167606.lic**\.
 
 **d)** Clique no botão **OK** para aplicar.
@@ -982,3 +981,24 @@ Deixe as demais opções nos valores padão, e clique no botão ***OK***\.
 **e)** Aguarde o ***FG_B*** reiniciar.
 
 **f)** Confira se a Licença foi aplicada corretamente.
+
+***
+ ### TAREFA 06
+
+ Vamos configurar uma VPN *SITE-to-SITE* entre o **SITE_A** e o **SITE_B**\.
+
+***
+ 1. Configurae a *VPN SITE-to-SITE* no ***FG_A***\.
+
+ **a)** Em **VPN > IPsec Wizard**, prencha os campos com as informações abaixo\:
+
+*Name*: ***SITE_A-to-B***  
+*Template Type*: ***Site to Site***  
+*Remote Device Type*: ***FortiGate***  
+*NAT Configuration*: ***No NAT between sites***  
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-SITE2SITE_1.png)
+ 
+ 
