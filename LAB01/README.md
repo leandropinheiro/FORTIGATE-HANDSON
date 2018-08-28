@@ -16,6 +16,7 @@
     * [Tarefa 05](#tarefa-05)
     * [Tarefa 06](#tarefa-06)
     * [Tarefa 07](#tarefa-07)
+    * [Tarefa 08](#tarefa-08)
 ***
 ### ***Objetivo***
 Neste lab o aluno será apresentado as configurações iniciais do ***FORTIGATE***, assim como aos comandos básicos para configurar a interface de gerencia via *CLI*.
@@ -1187,20 +1188,415 @@ Clique no botão **Create** para concluir\.
 ***
  ### TAREFA 07
 
- Vamos configurar uma VPN *SITE-to-SITE* entre o **SITE_A** e o **SITE_B**\.
+ Vamos configurar uma VPN *CLIENT-to-SITE* no **SITE_A**\.
 
 ***
- 1. Configurar a *VPN SITE-to-SITE* no ***FG_A***\.
+ 1. Configurar a *VPN CLIENT-to-SITE* no ***FG_A***\.
 
- **a)** Em **VPN > IPsec Wizard > (1) VPN Setup**, prencha os campos com as informações abaixo\:
+**a)** Em **VPN > IPsec Wizard > (1) VPN Setup**, prencha os campos com as informações abaixo\:
 
-*Name*: ***SITE_A-to-B-W1***  
-*Template Type*: ***Site to Site***  
-*Remote Device Type*: ***FortiGate***  
-*NAT Configuration*: ***No NAT between sites***  
+*Name*: ***CLIENTVPN***  
+*Template Type*: ***Remote Access***  
+*Remote Device Type*: ***Client-based | FortiClient***    
 
 Clique no botão **Next >** para prosseguir\.
 
-![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-SITE2SITE_1.png)
- 
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_1.png)
 
+**b)** Em **(2) Authentication**, prencha os campos com as informações abaixo\:
+
+*Incoming Interface*: ***WAN1 (port1)***  
+*Authentication Method*: ***Pre-shared Key***  
+*Pre-shared Key*: ***P@ssw0rd!***
+
+Clique no botão **[ + ]** para adicionar um *User Group* novo\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_2.png)
+
+**c)** Em **Edit User Group**, prencha os campos com as informações abaixo\:
+
+*Name*: ***VPN_USERS***
+*Type*: ***Firewall***
+
+Clique no botão **[ + ]** para adicionar um *Member* novo\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_3.png)
+
+Clique no botão **[ + ]** para adicionar um *Member* novo\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_4.png)
+
+Clique em **+ User** para adicionar um *User* novo\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_5.png)
+
+**d)** Em **Users/Groups Creation Wizard > (1) User Type**, selecione ***Local User***, depois clique no botão **Next**\:
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_6.png)
+
+**e)** Em **Users/Groups Creation Wizard > (2) Login Credentials**, prencha os campos com as informações abaixo\:
+
+*Username*: ***remote_vpn_user***  
+*Password*: ***P@ssw0rd!***
+
+Clique no botão **Next** para continuar\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_7.png)
+
+**f)** Em **Users/Groups Creation Wizard > (3) Contact Info**, clique no botão **Next** para continuar\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_8.png)
+
+**g)** Em **Users/Groups Creation Wizard > (4) Extra Info**, clique no botão **Submit** para adicionar o novo usuário\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_9.png)
+
+**h)** Em **Select Enrties**, selecione o usuário ***remote_vpn_user***, depois clique no botão **Close** para adicionar o usuário no grupo\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_10.png)
+
+**i)** Em **Edit User Group**, clique no botão **Ok** para adicionar o novo grupo\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_11.png)
+
+**j)** Em **(2) Authentication**, clique no botão **Next >** para continuar\:
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_12.png)
+
+**l)** Em **(3) Policy & Routing**, prencha os campos com as informações abaixo\:
+
+*Local Interface*: ***LAN***  
+*Local Address*: ***SITE_A_LAN_NET | SITE_A_SERVIDORES_NET***  
+*Client Address Range*: ***10.1.255.100-10.1.255.200***  
+*Subnet Mask*: ***255.255.255.255***
+*DNS Server*: ***Use System DNS***  
+*Enable IPv4 plit Tunnel*: ***Enabled***  
+*Allow Endpoint Registration*: ***Enabled***
+
+Clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_13.png)
+
+**m)** Em **(4) Client Options**, clique no botão **Next >** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_14.png)
+
+***
+3. Configurar *SSL-VPN Settings* no ***FG_A***\.
+
+**a)** Em **VPN > SSL-VPN Settings**, observer que a porta *TCP/443 (HTTPS)* está em conflito com a porta utiliada pela *Web Interface* de Configuração do ***FG_A***\:
+
+Para resolver esse problema podemos alterar a porta utilizada no *Portal SSL Externo* ou a da *Interface Web* de Configuração, optei pela segunda opção, pois ela não tem impacto em clientes VPN onde o FW da rede só libera navegação WEB em portas padrão *(80/443)*\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/FG_A-create-VPN-CLIENT2SITE_15.png)
+
+**b)** Em **System > Settings**, alterar o campo *HTTPS port* para ***444***, depois clicar no botão **Apply**\:
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/FG_A-create-VPN-CLIENT2SITE_16.png)
+
+**c)** Acessa novamente a Interface Web do ***FG_A*** pelo endereço **https://10.1.40.2:444** \.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/FG_A-create-VPN-CLIENT2SITE_17.png)
+
+**d)** Em **VPN > SSL-VPN Settings**, prencha os campos com as informações abaixo\:
+
+*Listen on Interface(s)*: ***WAN1 (port1)***  
+*Listen on Port*: ***443***  
+
+**(i)** Observe que ele informa qual o endereço está escutando por novas conexões, no nosso caso *https://192.168.100.1*, este é a url que deve ser utilizada nos clientes.
+
+*Restrict Access*: ***Allow access from any host***  
+*Address Range*: ***Specify custom IP ranges***  
+*IP Ranges*: ***CLIENTVPN_range***  
+*DNS Server*: ***Same as client system DNS***  
+
+Selecione ***All Other Users/Groups*** e depois clique no botão **Edit**, selecione o portal ***full-access**\.
+
+Clique no botão **Apply** para prosseguir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_18.png)
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VPN-CLIENT2SITE_19.png)
+
+**e)** Veja que o Fortigate exibe um alerta sobre o Certificado built-in\.
+
+Para o nosso LAB clique no botão **OK** para ignorar\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/FG_A-create-VPN-CLIENT2SITE_20.png)
+
+**f)** Veja que o Fortigate exibe um alerta sobre a falta de uma Policie associada ao acesso SSL-VPN\.
+
+Clicar no alerta para abrir o editor de ***IPv4 Policy***\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/FG_A-create-VPN-CLIENT2SITE_21.png)
+
+**g)** Em **New Policy**, prencha os campos com as informações abaixo\:
+
+*Name*: ***ACESSO_VPN_SSL***  
+*Incoming Interface*: ***SSL-VPN tunnel interface (ssl.root)***  
+*Outgoing Interface*: ***LAN | DMZ (VLAN30)***  
+*Source*: ***CLIENTVPN_range | VPN_USERS*** (na imagem está errado)  
+*Destination*: ***SITE_A-to-B-W1_local*** (estou reutilizando um objeto criado pelo Wizard VPN)  
+*Service*: ***ALL***  
+*Action*: ***ACCEPT***  
+*NAT*: ***DISABLED***
+
+Para o nosso LAB clique no botão **OK** para criar a nova Policy\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/FG_A-create-VPN-CLIENT2SITE_22.png)
+
+***
+4. Testar o Acesso SSL-VPN sem cliente ao ***SITE_A*** no host ***CLIENTE_EXTERNO***\.
+
+**a)** Abrir o navegador **Firefox** e acessar o site *https://912.168.100.1*, e efetuar o login com as credenciais abixo, para testar acesso ***SSL-VPN Clientless***\:
+
+*Username*: ***remote_vpn_user***   
+*Password*: ***P@ssw0rd!***
+
+Clique no botão **Login** para continuar\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_1.png)
+
+**b)** Clieque em **Quick Connection** para prosseguir\:
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_2.png)
+
+**c)** Em **\< Quick Connection**, prencha os campos com as informações abaixo\:
+
+Selecione **SSH**    
+
+*Host*: ***pinetech@10.1.10.10*** (esse é o IP da LAN do SERVER1)  
+
+Clique no botão **Launch** para continuar\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_3.png)
+
+**d)** Em **Enter your credendials**, prencha os campos com as informações abaixo\:
+
+*Username*: ***pinetech***  
+*Password*: ***P@ssw0rd!***
+
+Clique no botão **Login** para continuar\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_4.png)
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_5.png)
+
+***
+5. Testar o Acesso SSL-VPN com cliente ao ***SITE_A*** no host ***CLIENTE_EXTERNO***\.
+
+**a)** Abrir a ferramenta de ***Editar conexões de Rede***\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_6.png)
+
+**b)** Selecionar adicionar uma nova conexão de rede\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/FG_A-create-VPN-CLIENT2SITE_23.png)
+
+**c)** Selecionar o tipo de conexão como ***Fortinet SSLVPN***\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_7.png)
+
+**d)** Clique no botão **Criar** para continuar\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_8.png)
+
+**e)** Em **Editando...**, prencha os campos com as informações abaixo\:
+
+*Nome da conecxão*: ***SITE_A SSL-VPN***  
+*Gateway*: ***192.168.100.1:443***  
+*Nome do usuário*: ***remote_vpn_user***
+
+Clique no botão **Salvar** para continuar\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_9.png)
+
+**f)** Em um terminal novo execute o comando abaixo\:
+
+>
+    sudo tail -f /var/log/syslog
+
+Não feche o terminal e siga para o próximo passo.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_10.png)
+
+**g)** Execute a conexão VPN\:
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_11.png)
+
+Efetue login com as credenciais abaixo:
+
+*Senha*: ***P@ssword!***
+
+Clique no botão **OK** para continuar.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_12.png)
+
+**h)** Descobrindo o *Hash* do Certificado do Servidor (***FG_A***)\:
+
+A conexão vai falhar, isso é esperado.
+
+No terminal que foi aberto anteriormente, localizer a mensagem que exibe o *Hash* do Certificado do ***FG_A***\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_13.png)
+
+Selecione e copie o *Hash*\.
+
+Edite a conexão VPN e adicione o *Hash*\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_14.png)
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_15.png)
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_16.png)
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_17.png)
+
+Tente conectar novamente!
+
+**i)** Em um terminal novo execute o comando abaixo\:
+
+>
+    ping -c 4 10.1.10.10
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_18.png)
+
+**j)** Abrir o navegador **Firefox** e acessar o site *http://10.1.10.10/info.php*\:
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_19.png)
+
+**l)** Abrir o navegador **Firefox** e acessar o site *http://172.16.0.10/info.php*\:
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VPN_ACCESS_20.png)
+
+***
+6. Testar o Acesso SSL-VPN com cliente ao ***SITE_A*** no host ***CLIENTE_WIN***\.
+
+**a)** Abrir o **FortiClient**\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_WIN-TESTE-VPN_ACCESS_1.png)
+
+**b)** Em **ACESSO REMOTO** clique em ***Configurar a VPN***\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_WIN-TESTE-VPN_ACCESS_2.png)
+
+**c)** Em **Nova conexão VPN**, prencha os campos com as informações abaixo\:
+
+*Nome da Conexão*: ***SITE_A SSL-VPN***  
+*Gateway Remoto*: ***192.168.100.1***  
+*Autenticação*: ***Prompt no login***  
+*[v]* ***Não Avisar sobre Certificados de Servidores não válidos***
+
+Clique no botão **Salvar** para concluir\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_WIN-TESTE-VPN_ACCESS_3.png)
+
+**d)** Em **ACESSO REMOTO**, prencha os campos com as informações abaixo\:
+
+*Nome da VPN*: ***SITE_A SSL-VPN***  
+*Usuário*: ***remote_vpn_user***  
+*Senha*: ***P@ssw0rd!***
+
+Clique no botão **Conectar** para fechar a VPN\.
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_WIN-TESTE-VPN_ACCESS_4.png)
+
+Veja que a conexão funcionou!
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_WIN-TESTE-VPN_ACCESS_5.png)
+
+**e)** Em um cmd novo execute o comando abaixo\:
+
+>
+    ping 10.1.10.10
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_WIN-TESTE-VPN_ACCESS_6.png)
+
+**f)** Abrir o navegador **Gogole Chrome** e acessar o site *http://10.1.10.10/info.php*\:
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_WIN-TESTE-VPN_ACCESS_7.png)
+
+**g)** Abrir o navegador **Google Chrome** e acessar o site *http://172.16.0.10/info.php*\:
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_WIN-TESTE-VPN_ACCESS_8.png)
+
+***
+ ### TAREFA 08
+
+ Vamos publicar os dois servidores do ***SITE_A*** utilizando endereços do *bloco IPV4* da **WAN1**\.
+
+***
+ 1. Configurar **VIRTUAL IP** do ***SERVER1*** no ***FG_A***\.
+
+**a)** Em **Policy & Objects > Virtual IPs**, clique em **+ Create New**\:
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VIRTUAL_IP_1.png)
+
+**b)** Em **New/Edit Virtual IP**, prencha os campos com as informações abaixo\:
+
+*Name*: ***SERVER1_VIP-W1***  
+*Interface*: ***WAN1 (port1)***  
+*External IP Address/Range*: ***192.168.100.11 - 192.168.100.11***  
+*Mapped IP Address/Range*: ***10.1.10.10 - 10.1.10.10***
+
+Clique no botão **OK** para concluir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VIRTUAL_IP_2.png)
+
+**c)** Em **New/Edit Virtual IP**, prencha os campos com as informações abaixo\:
+
+*Name*: ***SERVER2_VIP-W1***  
+*Interface*: ***WAN1 (port1)***  
+*External IP Address/Range*: ***192.168.100.10 - 192.168.100.10***  
+*Mapped IP Address/Range*: ***172.16.0.10 - 172.16.0.10***
+
+Clique no botão **OK** para concluir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VIRTUAL_IP_3.png)
+
+**d)** Em **Policy & Objects > IPv4 Policy**, clique em **+ Create New**\:
+
+Vamos criar uma regra para permitir o acesso externo aos Servidores.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VIRTUAL_IP_4.png)
+
+**e)** Em **New/Edit Policy**, prencha os campos com as informações abaixo\:
+
+*Name*: ***SERVER1_VIP***  
+*Incoming Interface*: ***SD-WAN***  
+*Outgoing Interface*: ***LAN***  
+*Source*: ***all***  
+*Destination*: ***SERVER1_VIP-W1***
+*Service*: ***HTTP***  
+*NAT*: ***ENBALED***
+
+Clique no botão **OK** para concluir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VIRTUAL_IP_5.png)
+
+**f)** Em **Policy & Objects > IPv4 Policy**, clique em **+ Create New**\:
+
+**g)** Em **New/Edit Policy**, prencha os campos com as informações abaixo\:
+
+*Name*: ***SERVER2_VIP***  
+*Incoming Interface*: ***SD-WAN***  
+*Outgoing Interface*: ***DMZ (VLAN30***  
+*Source*: ***all***  
+*Destination*: ***SERVER2_VIP-W1***
+*Service*: ***HTTP***  
+*NAT*: ***ENBALED***
+
+Clique no botão **OK** para concluir\.
+
+![FORTIGATE FG-A CREATE SITE-TO-SITE VPN](../Img/FG_A-create-VIRTUAL_IP_6.png)
+
+***
+ 2. Testar o acesso ao **VIRTUAL IP** dos servodores do ***SITE_A*** no host ***CLIENTE_EXTERNO***\.
+
+**a)** Abrir o navegador **Firefox** e acessar o site *http://192.168.100.10/info.php*\:
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VIP_ACCESS_1.png)
+
+**b)** Abrir o navegador **Firefox** e acessar o site *http://192.168.100.11/info.php*\:
+
+![FORTIGATE FG-A CONFIGURE SSL-VPN SETTINGS](../Img/CLIENTE_EXTERNO-TESTE-VIP_ACCESS_2.png)
+
+***
+
+Lab concluido (ufa!!!)\.
