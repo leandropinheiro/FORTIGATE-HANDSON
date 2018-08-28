@@ -1,3 +1,6 @@
+![LOGO PINETECH](../Img/LOGO_05@2x.png)
+
+
 # FORTIGATE v6.0 Hands On
 ## LAB 01
 
