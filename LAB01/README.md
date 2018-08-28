@@ -273,7 +273,7 @@ Compare com a saída de exemplo abaixo:
 Compare com a saída abaixo:
 
 >
-    FG_A # execute ping 10.1.40.1
+    FG_A # get system interface
     == [ port1 ]
     name: port1   mode: dhcp    ip: 0.0.0.0 0.0.0.0   status: up    netbios-forward: disable    type: physical   
     netflow-sampler: disable    sflow-sampler: disable    scan-botnet-connections: disable    src-check: enable    
@@ -1603,3 +1603,5 @@ Clique no botão **OK** para concluir\.
 ***
 
 Lab concluido (ufa!!!)\.
+
+![THANK YOU](../Img/Thank_you.png)
